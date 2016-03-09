@@ -5,7 +5,7 @@
 ## Login   <gascio_m@epitech.net>
 ##
 ## Started on  Fri Mar  4 00:35:00 2016 Mathieu GASCIOLLI
-## Last update Wed Mar  9 01:28:54 2016 Mathieu GASCIOLLI
+## Last update Wed Mar  9 15:13:26 2016 Mathieu GASCIOLLI
 ##
 
 
@@ -15,6 +15,7 @@ HEADDIR	=includes
 SRCDIR1	=jeu
 SRCDIR2	=affichage
 SRCDIR3	=IA
+SRCDIR4	=hand_eval
 
 
 CFLAGS	= -I$(HEADDIR)
@@ -23,7 +24,8 @@ NAME	= poker
 
 SRC	= $(wildcard $(SRCDIR1)/*.c) \
 	  $(wildcard $(SRCDIR2)/*.c) \
-	  $(wildcard $(SRCDIR1)/$(SRCDIR3)/*.c)
+	  $(wildcard $(SRCDIR1)/$(SRCDIR3)/*.c) \
+	  $(wildcard $(SRCDIR1)/$(SRCDIR4)/*.c)
 
 OBJ	= $(SRC:.c=.o)
 
