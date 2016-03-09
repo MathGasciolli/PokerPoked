@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 02:02:31 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 17:51:40 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 19:35:38 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -20,9 +20,11 @@ void	distrib_cartes_debut()
   int	i;
   int	j;
   int	k;
+  int	L;
 
   i = 0;
   k = 0;
+  L = 0;
   while (i < 2)
     {
       j = rand_carte();
@@ -32,14 +34,16 @@ void	distrib_cartes_debut()
       joueur[k].couleur = paquet[j].couleur;
       paquet[j].valeur = 0;
       if (joueur[k].valeur == 1)
-	hand1[k].rank = 14;
+	hand1[L].rank = 14;
       else
-	hand1[k].rank = joueur[k].valeur;
-      hand1[k].suit = joueur[k].couleur;
+	hand1[L].rank = joueur[k].valeur;
+      hand1[L].suit = joueur[k].couleur;
       i++;
       k++;
+      L++;
     }
   k = 0;
+  L = 0;
   while (i < 4)
     {
       j = rand_carte();
@@ -49,11 +53,12 @@ void	distrib_cartes_debut()
       IA[k].couleur = paquet[j].couleur;
       paquet[j].valeur = 0;
       if (IA[k].valeur == 1)
-	hand2[k].rank = 14;
+	hand2[L].rank = 14;
       else
-	hand2[k].rank = IA[k].valeur;
-      hand2[k].suit = IA[k].couleur;
+	hand2[L].rank = IA[k].valeur;
+      hand2[L].suit = IA[k].couleur;
       i++;
+      L++;
       k++;
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 18:22:13 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 20:09:19 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -31,6 +31,8 @@ void	malloc_init()
 
 void	free_all()
 {
+  free(hand1);
+  free(hand2);
   free(paquet);
   free(joueur);
   free(IA);
@@ -39,9 +41,6 @@ void	free_all()
 
 void	deroulement(int o)
 {
-  if (check_board() != PREFLOP)
-    aff_strength(0);
-  refresh();
   if (o == 0)
     {
       aff_sous();
@@ -56,6 +55,9 @@ void	deroulement(int o)
       refresh();
       get_action();
     }
+  if (check_board() != PREFLOP)
+    aff_strength(0);
+  refresh();
 }
 
 int	main(int ac, char **av)

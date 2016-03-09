@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 18:39:42 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 20:11:27 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -18,7 +18,8 @@ void	debut_hand()
   malloc_init();
   board = init_board();
   paquet = init_paquet();
-  distrib_cartes_debut();
+  hand1 = malloc(8 * sizeof(Card));
+  hand2 = malloc(8 * sizeof(Card));
   while (i < 7)
     {
       hand1[i].rank = 0;
@@ -27,6 +28,7 @@ void	debut_hand()
       hand2[i].suit = 0;
       i++;
     }
+  distrib_cartes_debut();
   ia.mise = 0;
   player.mise = 0;
   blind();
@@ -79,17 +81,20 @@ void    end_of_hand_0()
       if (situation == FOLD)
 	{
 	  clear();
+	  aff_strength(0);
 	  affichage_hud_board();
 	}
       else
 	{
 	  clear();
+	  aff_strength(0);
 	  affichage_hud_board_end();
 	}
       if (situation != FOLD)
 	{
-	  get_action();
 	  argent_fin(aff_strength(1));
+	  sleep(1);
+	  get_action();
 	}
     }
   if (situation == FOLD)

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:51:23 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 17:33:58 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 19:34:11 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -118,7 +118,7 @@ void    thecheck()
 	  hand2[j+2].rank = board[j].valeur;
 	}
       hand1[j+2].suit = board[j].couleur;
-      hand2[j+2].rank = board[j].couleur;
+      hand2[j+2].suit = board[j].couleur;
       j++;
     }
   if (o == 0)

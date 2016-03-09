@@ -5,12 +5,12 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 18:47:01 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 19:59:17 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
 
-int	nbr_cards(Card hand[])
+int	nbr_cards(Card *hand)
 {
   int	i;
 
@@ -20,7 +20,7 @@ int	nbr_cards(Card hand[])
   return (i);
 }
 
-int search(Card hand[],int n){
+int search(Card *hand,int n){
   int i;
 
   for (i=0;i<nbr_cards(hand);i++){
@@ -31,7 +31,7 @@ int search(Card hand[],int n){
   return 0;
 }
 
-int isStraight(Card hand[], int *type){
+int isStraight(Card *hand, int *type){
   int i,min;
 
   min=20;
@@ -51,7 +51,7 @@ int isStraight(Card hand[], int *type){
 
 }
 
-int isStraightFlush(Card hand[]){
+int isStraightFlush(Card *hand){
   int suit = hand[0].suit;
   int i;
 
@@ -62,13 +62,13 @@ int isStraightFlush(Card hand[]){
   return 1;
 }
 
-int isRoyal(Card hand[]){
+int isRoyal(Card *hand){
   if (search(hand,14))
     return 1;
   return 0;
 }
 
-int isFour(Card hand[], int *type){
+int isFour(Card *hand, int *type){
   if (hand[0].rank==hand[1].rank&&hand[1].rank==hand[2].rank&&hand[2].rank==hand[3].rank){
     *type = hand[0].rank;
     return 1;
@@ -92,7 +92,7 @@ int isFour(Card hand[], int *type){
   return 0;
 }
 
-int isThree(Card hand[], int *type){
+int isThree(Card *hand, int *type){
   if (hand[0].rank==hand[1].rank&&hand[1].rank==hand[2].rank){
     *type=hand[0].rank;
     return 1;
@@ -137,7 +137,7 @@ int isThree(Card hand[], int *type){
   return 0;
 }
 
-int isFull(Card hand[],int *type){
+int isFull(Card *hand,int *type){
   int second;
   int i=0;
   while (hand[i].rank==*type)
@@ -151,7 +151,7 @@ int isFull(Card hand[],int *type){
   return 1;
 }
 
-int isPair(Card hand[],int *type){
+int isPair(Card *hand,int *type){
   int i,j;
 
   for (i=0;i<nbr_cards(hand)-1;i++)
@@ -164,7 +164,7 @@ int isPair(Card hand[],int *type){
   return 0;
 }
 
-int isTwoPairs(Card hand[], int *type, int *secondType){
+int isTwoPairs(Card *hand, int *type, int *secondType){
   int i,j;
 
   for (i=0;i<nbr_cards(hand)-1;i++)
@@ -185,7 +185,7 @@ int isTwoPairs(Card hand[], int *type, int *secondType){
   return 0;
 }
 
-int findHighDouble(Card hand[],int *type, int *secondType, int *highCard){
+int findHighDouble(Card *hand,int *type, int *secondType, int *highCard){
   int i;
 
   for (i=0;i<nbr_cards(hand);i++)
@@ -197,7 +197,7 @@ int findHighDouble(Card hand[],int *type, int *secondType, int *highCard){
   return 0;
 }
 
-int findHighSimple(Card hand[],int *type, int *highCard){
+int findHighSimple(Card *hand,int *type, int *highCard){
   int i;
   int max = 0;
 
@@ -210,7 +210,7 @@ int findHighSimple(Card hand[],int *type, int *highCard){
   return 1;
 }
 
-int findHigh(Card hand[], int *highCard){
+int findHigh(Card *hand, int *highCard){
   int i;
   int max = 0;
 
@@ -222,7 +222,7 @@ int findHigh(Card hand[], int *highCard){
   return 1;
 }
 
-int isFlush(Card hand[],int *highCard){
+int isFlush(Card *hand,int *highCard){
   int i;
   int suit;
 
@@ -235,7 +235,7 @@ int isFlush(Card hand[],int *highCard){
   return 1;
 }
 
-int	find_hand(Card hand[], int *type, int *highCard, int *secondType)
+int	find_hand(Card *hand, int *type, int *highCard, int *secondType)
 {
 
   if (isFour(hand, type))
@@ -307,7 +307,34 @@ int	aff_strength(int end)
   int	secondType1,secondType2;
   int	points1,points2;
 
-  if (end == 1)
+  if (end == 0)
+    {
+      points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
+      points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
+
+      move(LINES-2, 3);
+      if (points1 == 1)
+	printw("High Card (%s)", int_rank(highCard1));
+      else if (points1 == 2)
+	printw("One Pair (%s)", int_rank(type1));
+      else if (points1 == 3)
+	printw("Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
+      else if (points1 == 4)
+	printw("Three of a kind (%s)", int_rank(type1));
+      else if (points1 == 5)
+	printw("Straight (%s high)", int_rank(type1));
+      else if (points1 == 6)
+	printw("Flush (%s high)", int_rank(highCard1));
+      else if (points1 == 7)
+	printw("Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
+      else if (points1 == 8)
+	printw("Four of a kind (%s)", int_rank(type1));
+      else if (points1 == 9)
+	printw("Straight Flush (%s high)", int_rank(type1));
+      else if (points1 == 10)
+	printw("Royal Flush !");
+    }
+  else if (end == 1)
     {
       points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
       points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
@@ -392,6 +419,6 @@ int	aff_strength(int end)
 	    return 0;
 	}
       }
+      return 2;
     }
-  return (2);
 }
