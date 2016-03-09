@@ -5,19 +5,41 @@
 ## Login   <gascio_m@epitech.net>
 ##
 ## Started on  Fri Mar  4 00:35:00 2016 Mathieu GASCIOLLI
-## Last update Tue Mar  8 19:11:12 2016 Mathieu GASCIOLLI
+## Last update Wed Mar  9 01:28:54 2016 Mathieu GASCIOLLI
 ##
 
-SRC	= jeu/*.c \
-	  affichage/*.c \
-	  jeu/IA/*.c
+
+CC	=gcc
+
+HEADDIR	=includes
+SRCDIR1	=jeu
+SRCDIR2	=affichage
+SRCDIR3	=IA
+
+
+CFLAGS	= -I$(HEADDIR)
 
 NAME	= poker
 
+SRC	= $(wildcard $(SRCDIR1)/*.c) \
+	  $(wildcard $(SRCDIR2)/*.c) \
+	  $(wildcard $(SRCDIR1)/$(SRCDIR3)/*.c)
+
+OBJ	= $(SRC:.c=.o)
+
 all:	$(NAME)
 
-$(NAME): fclean
-	cc -o $(NAME) $(SRC) -lncurses -I./includes
+$(NAME):	$(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -lncurses
 
-fclean:
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
 	rm -f $(NAME)
+
+re:	fclean all
+
+install:	$(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -lncurses
+	rm -f $(OBJ)
