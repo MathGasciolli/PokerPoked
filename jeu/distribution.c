@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 02:02:31 2016 Mathieu GASCIOLLI
-** Last update Fri Mar  4 13:48:31 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 17:51:40 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -31,6 +31,11 @@ void	distrib_cartes_debut()
       joueur[k].valeur = paquet[j].valeur;
       joueur[k].couleur = paquet[j].couleur;
       paquet[j].valeur = 0;
+      if (joueur[k].valeur == 1)
+	hand1[k].rank = 14;
+      else
+	hand1[k].rank = joueur[k].valeur;
+      hand1[k].suit = joueur[k].couleur;
       i++;
       k++;
     }
@@ -43,6 +48,11 @@ void	distrib_cartes_debut()
       IA[k].valeur = paquet[j].valeur;
       IA[k].couleur = paquet[j].couleur;
       paquet[j].valeur = 0;
+      if (IA[k].valeur == 1)
+	hand2[k].rank = 14;
+      else
+	hand2[k].rank = IA[k].valeur;
+      hand2[k].suit = IA[k].couleur;
       i++;
       k++;
     }

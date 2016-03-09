@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 15:08:15 2016 Mathieu GASCIOLLI
-** Last update Sat Mar  5 15:50:47 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 17:44:16 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -34,6 +34,87 @@ void	aff_cartes_IA()
       i++;
     }
   mvprintw(8, k, "|---------|\n");
+}
+
+void	aff_cartes_IA_end()
+{
+  int	i;
+  int	j;
+
+  j = 0;
+  i = 8;
+  while (i > 0)
+    {
+      if (i == 8)
+	mvprintw(1, 5, "|---------|\n");
+      else if (i > 5 && i != 8)
+	mvprintw(1+(8-i), 5, "|         |\n");
+      else if (i == 5)
+	{
+	  mvprintw(1+(8-i), 5, "|   ");
+	  color_carte(IA[j].couleur);
+	  printw("(%s)", interpreteur_valeur(IA[j]));
+	  decolor_carte(IA[j].couleur);
+	  mvprintw(1+(8-i), 15, "|\n");
+	}
+      else if (i == 4)
+	{
+	  mvprintw(1+(8-i), 5, "| ");
+	  color_carte(IA[j].couleur);
+	  if (IA[j].couleur == PIQUE)
+	    printw(" PIQUE ");
+	  else if (IA[j].couleur == CARREAU)
+	    printw("CARREAU");
+	  else if (IA[j].couleur == TREFLE)
+	    printw("TREFLE ");
+	  else if (IA[j].couleur == COEUR)
+	    printw(" COEUR ");
+	  decolor_carte(IA[j].couleur);
+	  mvprintw(1+(8-i), 15, "|");
+	}
+      else if (i < 4 && i != 1)
+	mvprintw(1+(8-i), 5, "|         |\n");
+      else if (i == 1)
+	mvprintw(1+(8-i), 5, "|---------|\n");
+      i--;
+    }
+  j++;
+  i = 8;
+  while (i > 0)
+    {
+      if (i == 8)
+	mvprintw(1, 18, "|---------|\n");
+      else if (i > 5 && i != 8)
+	mvprintw(1+(8-i), 18, "|         |\n");
+      else if (i == 5)
+	{
+	  mvprintw(1+(8-i), 18, "|   ");
+	  color_carte(IA[j].couleur);
+	  printw("(%s)", interpreteur_valeur(IA[j]));
+	  decolor_carte(IA[j].couleur);
+	  mvprintw(1+(8-i), 28, "|\n");
+	}
+      else if (i == 4)
+	{
+	  mvprintw(1+(8-i), 18, "| ");
+	  color_carte(IA[j].couleur);
+	  if (IA[j].couleur == PIQUE)
+	    printw(" PIQUE ");
+	  else if (IA[j].couleur == CARREAU)
+	    printw("CARREAU");
+	  else if (IA[j].couleur == TREFLE)
+	    printw("TREFLE ");
+	  else if (IA[j].couleur == COEUR)
+	    printw(" COEUR ");
+	  decolor_carte(IA[j].couleur);
+	  mvprintw(1+(8-i), 28, "|");
+	}
+      else if (i < 4 && i != 1)
+	mvprintw(1+(8-i), 18, "|         |\n");
+      else if (i == 1)
+	mvprintw(1+(8-i), 18, "|---------|\n");
+      i--;
+    }
 }
 
 void	aff_cartes_joueur()

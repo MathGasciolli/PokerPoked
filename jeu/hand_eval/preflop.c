@@ -4,8 +4,8 @@
 ** Made by Mathieu GASCIOLLI
 ** Login   <gascio_m@epitech.net>
 **
-** Started on  Wed Mar  9 14:51:55 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 15:17:41 2016 Mathieu GASCIOLLI
+** Started on  Wed Mar  9 18:15:51 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 18:22:46 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"

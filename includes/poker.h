@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Tue Mar  8 20:53:09 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 16:41:12 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -31,6 +31,12 @@ typedef struct s_params
   char	*ianame;
 } params;
 
+typedef struct s_card
+{
+  int	rank;
+  int	suit;
+} Card;
+
 
 // GLOBALES
 
@@ -48,6 +54,8 @@ int	whofolded;
 int	last_action;
 int	ia_check;
 int	pl_check;
+Card	hand1[7];
+Card	hand2[7];
 
 // Macros
 

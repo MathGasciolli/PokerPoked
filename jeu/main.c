@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 15:18:17 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 18:22:13 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -39,7 +39,8 @@ void	free_all()
 
 void	deroulement(int o)
 {
-  aff_hand_value();
+  if (check_board() != PREFLOP)
+    aff_strength(0);
   refresh();
   if (o == 0)
     {

@@ -5,17 +5,28 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 02:22:45 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 18:39:42 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
 
 void	debut_hand()
 {
+  int	i;
+
+  i = 0;
   malloc_init();
   board = init_board();
   paquet = init_paquet();
   distrib_cartes_debut();
+  while (i < 7)
+    {
+      hand1[i].rank = 0;
+      hand2[i].rank = 0;
+      hand1[i].suit = 0;
+      hand2[i].suit = 0;
+      i++;
+    }
   ia.mise = 0;
   player.mise = 0;
   blind();
@@ -65,10 +76,21 @@ void    end_of_hand_0()
     {
       deroulement(1);
       deroulement(0);
-      clear();
-      affichage_hud_board();
+      if (situation == FOLD)
+	{
+	  clear();
+	  affichage_hud_board();
+	}
+      else
+	{
+	  clear();
+	  affichage_hud_board_end();
+	}
       if (situation != FOLD)
-	get_action();
+	{
+	  get_action();
+	  argent_fin(aff_strength(1));
+	}
     }
   if (situation == FOLD)
     {
@@ -87,10 +109,21 @@ void	end_of_hand_1()
     {
       deroulement(0);
       deroulement(1);
-      clear();
-      affichage_hud_board();
+      if (situation == FOLD)
+	{
+	  clear();
+	  affichage_hud_board();
+	}
+      else
+	{
+	  clear();
+	  affichage_hud_board_end();
+	}
       if (situation != FOLD)
-	get_action();
+	{
+	  get_action();
+	  argent_fin(aff_strength(1));
+	}
     }
   if (situation == FOLD)
     {
