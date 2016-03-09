@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Tue Mar  8 21:18:34 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 02:04:20 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -37,10 +37,57 @@ void	free_all()
   free(board);
 }
 
+void	deroulement(int o)
+{
+  if (o == 0)
+    {
+      aff_sous();
+      aff_sous_mise();
+      refresh();
+      ias_turn();
+    }
+  else if (o == 1)
+    {
+      aff_sous();
+      aff_sous_mise();
+      refresh();
+      get_action();
+    }
+}
+
+void	finpartie(int ac, char **av)
+{
+  int	c;
+
+  if (player.argent == 0)
+    mvprintw(LINES/2, COLS/2 - 11, "You lost the game ! :-(");
+  else
+    mvprintw(LINES/2, COLS/2 - 11, "You won the game ! :-)");
+  mvprintw(LINES/2 + 2, COLS/2 - 10, "Press R to restart !");
+  mvprintw(LINES/2+3, COLS/2 - 17, "Or press something else to quit !");
+  keypad(stdscr, TRUE);
+  c = getch();
+  if (c == 'r')
+    {
+      clear();
+      mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+      refresh();
+      sleep(2);
+      main(ac, av);
+    }
+  else
+    {
+      clear();
+      mvprintw(LINES/2, COLS/2 - 10, "Au revoir %s..", player.name);
+      refresh();
+      sleep(2);
+      close_screen();
+    }
+}
+
 int	main(int ac, char **av)
 {
   int	i;
-  int	c;
 
   i = 0;
   last_action = -1;
@@ -66,39 +113,25 @@ int	main(int ac, char **av)
 	  while (check_board() < RIVER)
 	    {
 	      if (last_action == CHECK)
-		{
-		  res_mises();
-		  aff_sous();
-		  aff_sous_mise();
-		  refresh();
-		}
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
-	      ias_turn();
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
+		res_mises();
+	      deroulement(0);
 	      if (situation == FOLD)
 		break;
-	      get_action();
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
+	      deroulement(1);
 	      if (situation == FOLD)
 		break;
 	    }
 	  if (situation != FOLD)
 	    {
-	      ias_turn();
-	      get_action();
+	      deroulement(0);
+	      deroulement(1);
 	      clear();
 	      affichage_hud_board();
-	      get_action();
+	      if (situation != FOLD)
+		get_action();
 	    }
-	  else
+	  if (situation == FOLD)
 	    {
-	      //refresh();
 	      if (whofolded == PLAYERFOLD)
 		mvprintw(5, COLS/2 - 9, "You folded. %s wins the pot.", ia.name);
 	      else if (whofolded == IAFOLD)
@@ -112,39 +145,25 @@ int	main(int ac, char **av)
 	  while (check_board() < RIVER)
 	    {
 	      if (last_action == CHECK)
-		{
-		  res_mises();
-		  aff_sous();
-		  aff_sous_mise();
-		  refresh();
-		}
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
-	      get_action();
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
+		res_mises();
+	      deroulement(1);
 	      if (situation == FOLD)
 		break;
-	      ias_turn();
-	      aff_sous();
-	      aff_sous_mise();
-	      refresh();
+	      deroulement(0);
 	      if (situation == FOLD)
 		break;
 	    }
 	  if (situation != FOLD)
 	    {
-	      ias_turn();
-	      get_action();
+	      deroulement(1);
+	      deroulement(0);
 	      clear();
 	      affichage_hud_board();
-	      get_action();
+	      if (situation != FOLD)
+		get_action();
 	    }
-	  else
+	  if (situation == FOLD)
 	    {
-	      refresh();
 	      if (whofolded == PLAYERFOLD)
 		mvprintw(5, COLS/2 - 9, "You folded. %s wins the pot.", ia.name);
 	      else if (whofolded == IAFOLD)
@@ -157,29 +176,6 @@ int	main(int ac, char **av)
       free_all();
     }
   clear();
-  if (player.argent == 0)
-    mvprintw(LINES/2, COLS/2 - 11, "You lost the game ! :-(");
-  else
-    mvprintw(LINES/2, COLS/2 - 11, "You won the game ! :-)");
-  mvprintw(LINES/2 + 2, COLS/2 - 10, "Press R to restart !");
-  mvprintw(LINES/2+3, COLS/2 - 17, "Or press something else to quit !");
-  keypad(stdscr, TRUE);
-  c = getch();
-  if (c == 'r')
-    {
-      clear();
-      mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
-      refresh();
-      sleep(2);
-      main(ac, av);
-    }
-  else
-    {
-      clear();
-      mvprintw(LINES/2, COLS/2 - 10, "Au revoir %s..", player.name);
-      refresh();
-      sleep(2);
-      close_screen();
-      return (0);
-    }
+  finpartie(ac, av);
+  return (0);
 }

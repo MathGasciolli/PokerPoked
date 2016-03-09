@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 18:17:09 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 01:34:09 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 01:38:55 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -47,7 +47,7 @@ void	ia_call()
   ia.mise = ia.mise + call;
   ia_check = 1;
   situation = CHECK;
-  last_action = BET;
+  last_action = CHECK;
 }
 
 void	ia_allin()
@@ -77,13 +77,13 @@ void	ias_turn()
   sleep(1);
   if (check_board() == PREFLOP)
     act = ia_preflop();
-  /* else if (check_board() == FLOP)
+  else if (check_board() == FLOP)
     act = ia_flop();
   else if (check_board() == TURN)
     act = ia_turn();
   else if (check_board() == RIVER)
     act = ia_river();
-  */ if (act == 0)
+  if (act == 0)
     ia_fold();
   else if (act == 1)
     ia_see();
