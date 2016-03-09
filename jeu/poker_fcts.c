@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:51:23 2016 Mathieu GASCIOLLI
-** Last update Tue Mar  8 21:13:14 2016 Mathieu GASCIOLLI
+** Last update Wed Mar  9 01:33:43 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -159,6 +159,7 @@ void    act_call()
   pot = pot + call;
   player.argent = player.argent - call;
   player.mise = player.mise + call;
+  pl_check = 1;
   situation = CHECK;
   last_action = BET;
 }
