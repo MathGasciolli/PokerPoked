@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 20:11:27 2016 Mathieu GASCIOLLI
+** Last update Thu Mar 10 17:19:26 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -81,19 +81,18 @@ void    end_of_hand_0()
       if (situation == FOLD)
 	{
 	  clear();
-	  aff_strength(0);
+	  //	  aff_strength(0);
 	  affichage_hud_board();
 	}
       else
 	{
 	  clear();
-	  aff_strength(0);
+	  //aff_strength(0);
 	  affichage_hud_board_end();
 	}
       if (situation != FOLD)
 	{
 	  argent_fin(aff_strength(1));
-	  sleep(1);
 	  get_action();
 	}
     }
@@ -126,8 +125,8 @@ void	end_of_hand_1()
 	}
       if (situation != FOLD)
 	{
-	  get_action();
 	  argent_fin(aff_strength(1));
+	  get_action();
 	}
     }
   if (situation == FOLD)
