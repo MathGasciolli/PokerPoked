@@ -5,10 +5,12 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Thu Mar 10 18:36:38 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 12:13:29 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
+
+Card	*tmp;
 
 int	nbr_cards(Card *hand)
 {
@@ -32,35 +34,72 @@ int search(Card *hand,int n){
 }
 
 int isStraight(Card *hand, int *type){
-  int i,min;
+  int i,a,max,u;
+  int	suit;
 
-  min=20;
-  for (i=0;i<nbr_cards(hand);i++)
-    if (hand[i].rank<min)
-      min=hand[i].rank;
-
-  if (search(hand,min+1))
-    if (search(hand,min+2))
-      if (search(hand,min+3))
-	if (search(hand,min+4)){
-	  *type = min+4;
-	  return 1;
-	}
-
+  a = 15;
+  u = 1;
+  while (u < nbr_cards(hand))
+    {
+      max = 3;
+      for (i=0;i<nbr_cards(hand);i++)
+	if (hand[i].rank > max && hand[i].rank < a)
+	  max = hand[i].rank;
+      if (search(hand,max-1))
+	if (search(hand,max-2))
+	  if (search(hand,max-3))
+	    if (search(hand,max-4)){
+	      *type = max;
+	      for (i=0;i<nbr_cards(hand);i++){
+		if (hand[i].rank == max)
+		  suit = hand[i].suit;
+	      }
+	      a = 0;
+	      i = 0;
+	      while (max > *type - 5 && i < nbr_cards(hand))
+		{
+		  if (hand[i].rank == max && hand[i].suit == suit)
+		    a++;
+		  i++;
+		  max--;
+		}
+	      if (a == 5)
+		return 2;
+	      else
+		return 1;
+	    }
+      a = max;
+      u++;
+    }
   return 0;
-
 }
 
+/*
 int isStraightFlush(Card *hand){
-  int suit = hand[0].suit;
   int i;
+  int suit;
+  int	j;
+  int	a;
 
-  for (i=1;i<5;i++)
-    if (hand[i].suit!=suit)
-      return 0;
-
-  return 1;
+  a = 0;
+  while (a < nbr_cards(hand))
+    {
+      suit = hand[a].suit;
+      j = 0;
+      i = 0;
+      while (i < nbr_cards(hand) && j < 5)
+	{
+	  if (hand[i].suit == suit)
+	    j++;
+	  i++;
+	}
+      if (j == 5)
+	return 1;
+      a++;
+    }
+  return 0;
 }
+*/
 
 int isRoyal(Card *hand){
   if (search(hand,14))
@@ -196,13 +235,13 @@ int isTwoPairs(Card *hand, int *type, int *secondType){
 int findHighDouble(Card *hand,int *type, int *secondType, int *highCard){
   int i;
 
+  *highCard = 0;
   for (i=0;i<nbr_cards(hand);i++)
     if (hand[i].rank!=(*type)&&hand[i].rank!=(*secondType)){
-      *highCard = hand[i].rank;
-      return 1;
+      if (hand[i].rank > *highCard)
+	*highCard = hand[i].rank;
     }
-
-  return 0;
+  return 1;
 }
 
 int findHighSimple(Card *hand,int *type, int *highCard){
@@ -230,6 +269,17 @@ int findHigh(Card *hand, int *highCard){
   return 1;
 }
 
+int findHighSuited(Card *hand, int suit){
+  int i;
+  int max = 0;
+
+  for (i=0;i<nbr_cards(hand);i++)
+    if (hand[i].rank>max && hand[i].suit == suit)
+      max = hand[i].rank;
+
+  return max;
+}
+
 int isFlush(Card *hand,int *highCard){
   int i;
   int suit;
@@ -248,8 +298,35 @@ int isFlush(Card *hand,int *highCard){
 	    j++;
 	  i++;
 	}
-      if (j == 5)
+      if (j == 5){
+	*highCard = findHighSuited(hand,suit);
 	return 1;
+      }
+      a++;
+    }
+  return 0;
+}
+
+int findFlush(Card *hand){
+  int i;
+  int suit;
+  int	j;
+  int	a;
+
+  a = 0;
+  while (a < nbr_cards(hand))
+    {
+      suit = hand[a].suit;
+      j = 0;
+      i = 0;
+      while (i < nbr_cards(hand) && j < 5)
+	{
+	  if (hand[i].suit == suit)
+	    j++;
+	  i++;
+	}
+      if (j == 5)
+	return a;
       a++;
     }
   return 0;
@@ -257,6 +334,7 @@ int isFlush(Card *hand,int *highCard){
 
 int	find_hand(Card *hand, int *type, int *highCard, int *secondType)
 {
+  Card	*main;
 
   if (isFour(hand, type))
     return 8;
@@ -268,15 +346,14 @@ int	find_hand(Card *hand, int *type, int *highCard, int *secondType)
       return 4;
   }
 
-  if (isStraight(hand,type)){
-    if(isStraightFlush(hand)){
+  if (isStraight(hand,type) == 1)
+    return 5;
+  else if(isStraight(hand,type) == 2){
       if (isRoyal(hand))
 	return 10;
       else
 	return 9;
     }
-    return 5;
-  }
 
   if (isFlush(hand,highCard))
     return 6;
@@ -295,6 +372,67 @@ int	find_hand(Card *hand, int *type, int *highCard, int *secondType)
   findHigh(hand,highCard);
   return 1;
 
+
+}
+
+int	findwin_high(Card *hand1, Card *hand2)
+{
+  int	i = 0,j = 0;
+  int	max1 = 2,max2 = 2;
+  int	a = 15,b = 15;
+  int	k=0;
+
+  while (a == b && k < 5)
+    {
+      for (i=0;i<nbr_cards(hand1);i++)
+	if (hand1[i].rank > max1 && hand1[i].rank < a)
+	  max1 = hand1[i].rank;
+      a = max1;
+      max1 = 2;
+      for (j=0;j<nbr_cards(hand2);j++)
+	if (hand2[j].rank > max2 && hand2[j].rank < b)
+	  max2 = hand2[j].rank;
+      b = max2;
+      max2 = 2;
+      k++;
+    }
+  if (a == b)
+    return 2;
+  else if (a < b)
+    return 0;
+  else if (a > b)
+    return 1;
+}
+
+int	findwin_high_suited(Card *hand1, Card *hand2)
+{
+  int	i = 0,j = 0;
+  int	max1 = 2,max2 = 2;
+  int	a = 15,b = 15;
+  int	k=1;
+  int	suit;
+
+  suit = findFlush(hand1);
+  while (a == b && k < 5)
+    {
+      for (i=0;i<nbr_cards(hand1);i++)
+	if (hand1[i].rank > max1 && hand1[i].rank < a && hand1[i].suit == suit)
+	  max1 = hand1[i].rank;
+      a = max1;
+      max1 = 2;
+      for (j=0;j<nbr_cards(hand2);j++)
+	if (hand2[j].rank > max2 && hand2[j].rank < b && hand2[j].suit == suit)
+	  max2 = hand2[j].rank;
+      b = max2;
+      max2 = 2;
+      k++;
+    }
+  if (a == b)
+    return 2;
+  else if (a < b)
+    return 0;
+  else if (a > b)
+    return 1;
 }
 
 char    *int_rank(int val)
@@ -327,10 +465,14 @@ int	aff_strength(int end)
   int	secondType1,secondType2;
   int	points1,points2;
 
+  tmp = malloc(6 * sizeof(Card));
+
   if (end == 0)
     {
       points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
       points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
+
+      free(tmp);
 
       move(LINES-2, 3);
       if (points1 == 1)
@@ -344,7 +486,7 @@ int	aff_strength(int end)
       else if (points1 == 5)
 	printw("Straight (%s high)", int_rank(type1));
       else if (points1 == 6)
-	printw("Flush", int_rank(highCard1));
+	printw("Flush (%s high)", int_rank(highCard1));
       else if (points1 == 7)
 	printw("Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
       else if (points1 == 8)
@@ -366,7 +508,7 @@ int	aff_strength(int end)
       else if (points2 == 5)
 	printw("Straight (%s high)", int_rank(type2));
       else if (points2 == 6)
-	printw("Flush", int_rank(highCard2));
+	printw("Flush (%s high)", int_rank(highCard2));
       else if (points2 == 7)
 	printw("Full House (%s, %s)", int_rank(type2), int_rank(secondType2));
       else if (points2 == 8)
@@ -381,6 +523,8 @@ int	aff_strength(int end)
       points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
       points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
 
+      free(tmp);
+
       if (points1>points2)
 	return 1;
       else if (points2>points1)
@@ -390,7 +534,7 @@ int	aff_strength(int end)
 	  if (highCard1>highCard2)
 	    return 1;
 	  else if (highCard1==highCard2)
-	    return 2;
+	    return (findwin_high(hand1,hand2));
 	  else
 	    return (0);
 	}
@@ -403,7 +547,7 @@ int	aff_strength(int end)
 	    if (highCard1>highCard2)
 	      return 1;
 	    else if (highCard1==highCard2)
-	      return 2;
+	      return (findwin_high(hand1,hand2));
 	    else
 	      return 0;
 	  }
@@ -432,7 +576,7 @@ int	aff_strength(int end)
 	  if (type1>type2)
 	    return 1;
 	  else if (type1==type2)
-	    return 2;
+	    return (findwin_high(hand1,hand2));
 	  else
 	    return 0;
 	}
@@ -456,7 +600,7 @@ int	aff_strength(int end)
 	  if (highCard1>highCard2)
 	    return 1;
 	  else if (highCard1==highCard2)
-	    return 2;
+	    return (findwin_high_suited(hand1,hand2));
 	  else
 	    return 0;
 	}
