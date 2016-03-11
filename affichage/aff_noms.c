@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 17:05:34 2016 Mathieu GASCIOLLI
-** Last update Tue Mar  8 17:38:45 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:32:30 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -49,5 +49,5 @@ int     nbrlen(int nb)
 void	aff_sous()
 {
   mvprintw(12, 16 - nbrlen(ia.argent)/2, " %d ", ia.argent);
-  mvprintw(LINES - 1, COLS/2 - nbrlen(player.argent)/2, " %d ", player.argent);
+  mvprintw(LINES - 1, COLS/2 - nbrlen(player.argent)/2 - 1, " %d ", player.argent);
 }

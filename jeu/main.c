@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 16:49:44 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:59:58 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"

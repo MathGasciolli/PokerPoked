@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 16:16:15 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:21:33 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -35,6 +35,7 @@ typedef struct s_params
   char	button_forces;
   char	button_menu;
   char	button_restart;
+  char	*playername;
 } params;
 
 typedef struct s_card

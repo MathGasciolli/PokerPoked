@@ -5,10 +5,81 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 14:27:08 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 12:34:30 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:38:20 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
+
+void	close_screen()
+{
+  endwin();
+  exit(EXIT_SUCCESS);
+}
+
+void	aff_menu(int selected, char **aff)
+{
+  int	i;
+
+  i = 0;
+  attron(A_DIM);
+  while (i < 3)
+    {
+      if (i == selected)
+	{
+	  attron(A_REVERSE);
+	  mvprintw(LINES/2 + 2*i, COLS/2 - strlen(aff[i])/2 - 3, "%s", aff[i]);
+	  attroff(A_REVERSE);
+	}
+      else
+	mvprintw(LINES/2 + 2*i, COLS/2 - strlen(aff[i])/2 - 3, "%s", aff[i]);
+      i++;
+    }
+  attroff(A_DIM);
+}
+
+void	do_thing_menu(int i)
+{
+  attroff(A_BOLD);
+  if (i == 0)
+    clear();
+  /*else if (i == 1)
+    open_settings();*/
+  else if (i == 2)
+    close_screen();
+}
+
+int	aff_accueil()
+{
+  int	selected;
+  int	c;
+  char	*aff[] = {
+    "PLAY",
+    "SETTINGS",
+    "QUIT",
+  };
+
+  selected = 0;
+  attron(A_BOLD);
+  keypad(stdscr, TRUE);
+  mvprintw(LINES/2 - 15, COLS/2 - 30, "  ___   ___        ___  ___     ___   ___       ___  __");
+  mvprintw(LINES/2 - 14, COLS/2 - 30, " |   | |   |  | / |    |   |   |   | |   | | / |    |  \\");
+  mvprintw(LINES/2 - 13, COLS/2 - 30, " |___| |   |  |/  |__  |___|   |___| |   | |/  |__  |   |");
+  mvprintw(LINES/2 - 12, COLS/2 - 30, " |     |   |  |\\  |    | \\   - |     |   | |\\  |    |   |");
+  mvprintw(LINES/2 - 11, COLS/2 - 30, " |     |___|  | \\ |___ |  \\    |     |___| | \\ |___ |__/");
+  c = 0;
+  aff_menu(selected, aff);
+  while (c != 10)
+    {
+      c = getch();
+      if (c == KEY_UP && selected > 0)
+	selected--;
+      else if (c == KEY_DOWN && selected < 2)
+	selected++;
+      else if (c == 10)
+	return (selected);
+      aff_menu(selected, aff);
+    }
+}
 
 void	init_screen()
 {
@@ -19,18 +90,11 @@ void	init_screen()
   start_color();
   cbreak();
   couleurs();
-  mvprintw((LINES / 2), (COLS /2) - 3, "POKER");
-  set_players_datas();
-  choose_name();
-  refresh();
   curs_set(0);
   noecho();
   clear();
-}
-
-void	close_screen()
-{
-  endwin();
+  do_thing_menu(aff_accueil(i));
+  clear();
 }
 
 void	affichage_hud()

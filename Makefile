@@ -5,13 +5,12 @@
 ## Login   <gascio_m@epitech.net>
 ##
 ## Started on  Fri Mar  4 00:35:00 2016 Mathieu GASCIOLLI
-## Last update Wed Mar  9 15:13:26 2016 Mathieu GASCIOLLI
+## Last update Fri Mar 11 18:16:53 2016 Mathieu GASCIOLLI
 ##
-
 
 CC	=gcc
 
-HEADDIR	=includes
+HEADDIR	=./includes
 SRCDIR1	=jeu
 SRCDIR2	=affichage
 SRCDIR3	=IA

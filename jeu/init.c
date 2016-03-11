@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 16:50:59 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:22:26 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -57,6 +57,7 @@ void	init_params()
   jeu.stack = 1000;
   jeu.blind = 20;
   jeu.ianame = "John Smith";
+  jeu.playername = "Player";
   jeu.button_forces = '<';
   jeu.button_restart = 'r';
   jeu.button_menu = 27;
@@ -126,6 +127,7 @@ carte   *init_paquet()
 void	set_players_datas()
 {
   ia.name = jeu.ianame;
+  player.name = jeu.playername;
   ia.argent = jeu.stack;
   player.argent = jeu.stack;
   ia.mise = 0;
@@ -145,6 +147,7 @@ int	choose_name()
 
 void	some_inits()
 {
+  set_players_datas();
   situation = CHECK;
   dealer = 1;
   pot = 0;
