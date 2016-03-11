@@ -5,12 +5,10 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 12:13:29 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 12:40:41 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
-
-Card	*tmp;
 
 int	nbr_cards(Card *hand)
 {
@@ -465,65 +463,37 @@ int	aff_strength(int end)
   int	secondType1,secondType2;
   int	points1,points2;
 
-  tmp = malloc(6 * sizeof(Card));
-
   if (end == 0)
     {
       points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
       points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
 
-      free(tmp);
-
       move(LINES-2, 3);
       if (points1 == 1)
-	printw("High Card (%s)", int_rank(highCard1));
+	printw("(1/10) High Card (%s)", int_rank(highCard1));
       else if (points1 == 2)
-	printw("One Pair (%s)", int_rank(type1));
+	printw("(2/10) One Pair (%s)", int_rank(type1));
       else if (points1 == 3)
-	printw("Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("(3/10) Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
       else if (points1 == 4)
-	printw("Three of a kind (%s)", int_rank(type1));
+	printw("(4/10) Three of a kind (%s)", int_rank(type1));
       else if (points1 == 5)
-	printw("Straight (%s high)", int_rank(type1));
+	printw("(5/10) Straight (%s high)", int_rank(type1));
       else if (points1 == 6)
-	printw("Flush (%s high)", int_rank(highCard1));
+	printw("(6/10) Flush (%s high)", int_rank(highCard1));
       else if (points1 == 7)
-	printw("Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("(7/10) Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
       else if (points1 == 8)
-	printw("Four of a kind (%s)", int_rank(type1));
+	printw("(8/10) Four of a kind (%s)", int_rank(type1));
       else if (points1 == 9)
-	printw("Straight Flush (%s high)", int_rank(type1));
+	printw("(9/10) Straight Flush (%s high)", int_rank(type1));
       else if (points1 == 10)
-	printw("Royal Flush !");
-
-      move(LINES-3, 3);
-      if (points2 == 1)
-	printw("High Card (%s)", int_rank(highCard2));
-      else if (points2 == 2)
-	printw("One Pair (%s)", int_rank(type2));
-      else if (points2 == 3)
-	printw("Two Pairs (%s, %s)", int_rank(type2), int_rank(secondType2));
-      else if (points2 == 4)
-	printw("Three of a kind (%s)", int_rank(type2));
-      else if (points2 == 5)
-	printw("Straight (%s high)", int_rank(type2));
-      else if (points2 == 6)
-	printw("Flush (%s high)", int_rank(highCard2));
-      else if (points2 == 7)
-	printw("Full House (%s, %s)", int_rank(type2), int_rank(secondType2));
-      else if (points2 == 8)
-	printw("Four of a kind (%s)", int_rank(type2));
-      else if (points2 == 9)
-	printw("Straight Flush (%s high)", int_rank(type2));
-      else if (points2 == 10)
-	printw("Royal Flush !");
+	printw("(10/10) Royal Flush !");
     }
   else if (end == 1)
     {
       points1 = find_hand(hand1, &type1, &highCard1, &secondType1);
       points2 = find_hand(hand2, &type2, &highCard2, &secondType2);
-
-      free(tmp);
 
       if (points1>points2)
 	return 1;

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 14:27:08 2016 Mathieu GASCIOLLI
-** Last update Thu Mar 10 17:22:08 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 12:34:30 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -39,7 +39,7 @@ void	affichage_hud()
 
   aff_noms();
   aff_cartes_joueur();
-  aff_cartes_IA_end();
+  aff_cartes_IA();
   aff_sous();
   aff_dealer();
   aff_pot();
@@ -58,7 +58,7 @@ void	affichage_hud_board()
 
   aff_noms();
   aff_cartes_joueur();
-  aff_cartes_IA_end();
+  aff_cartes_IA();
   aff_sous();
   aff_dealer();
   aff_pot();
