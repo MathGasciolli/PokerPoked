@@ -5,16 +5,79 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 02:20:51 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:40:23 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
+
+
+void	my_putchar(char s)
+{
+  write(1, &s, 1);
+}
+
+void	my_putstr(char *s)
+{
+  int	i;
+
+  i = 0;
+  while (s[i])
+    {
+      my_putchar(s[i]);
+      i++;
+    }
+}
+
+void	get_params(int fd)
+{
+  char	*input;
+
+  input = get_next_line(fd);
+  input = get_next_line(fd);
+  jeu.stack = atoi(input);
+  input = get_next_line(fd);
+  jeu.blind = atoi(input);
+  input = get_next_line(fd);
+  jeu.ianame = input;
+  input = get_next_line(fd);
+  jeu.button_forces = input[0];
+  input = get_next_line(fd);
+  jeu.button_restart = input[0];
+  input = get_next_line(fd);
+  jeu.button_menu = input[0];
+}
+
+void	init_game(char **av)
+{
+  int	fd;
+  char	*dest;
+
+  dest = malloc(50 * sizeof(char));
+  strcat(dest, "config/");
+  strcat(dest, av[1]);
+  if (access(dest, F_OK))
+    {
+      printf("File %s not found.\nLet's start with default params..\n", av[1]);
+      sleep(1);
+      init_params();
+    }
+  else
+    {
+      printf("File %s found.\nLoading params..\n", av[1]);
+      sleep(1);
+      fd = open(dest,O_RDONLY);
+      get_params(fd);
+    }
+}
 
 void	init_params()
 {
   jeu.stack = 1000;
   jeu.blind = 20;
   jeu.ianame = "John Smith";
+  jeu.button_forces = '<';
+  jeu.button_restart = 'r';
+  jeu.button_menu = 27;
 }
 
 void	res_mises()

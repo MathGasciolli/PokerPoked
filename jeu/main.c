@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 20:09:19 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:40:52 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -63,10 +63,15 @@ void	deroulement(int o)
 int	main(int ac, char **av)
 {
   srand(time(NULL));
-  init_params();
+  if (ac == 1)
+    init_params();
+  else
+    {
+      init_game(av);
+    }
   init_screen();
   some_inits();
-  while (player.argent > 0 && ia.argent > 0)
+  while (player.argent >= 0 && ia.argent >= 0)
     {
       debut_hand();
       poker_hand();

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 18:53:26 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:16:15 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -14,6 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <time.h>
 #include <string.h>
 #include <ncurses/curses.h>
@@ -29,6 +32,9 @@ typedef struct s_params
   int	stack;
   int	blind;
   char	*ianame;
+  char	button_forces;
+  char	button_menu;
+  char	button_restart;
 } params;
 
 typedef struct s_card
@@ -75,6 +81,12 @@ Card	*hand2;
 
 #define IAFOLD (0)
 #define PLAYERFOLD (1)
+
+// GNL
+
+#ifndef READ_SIZE_
+#define READ_SIZE (15)
+#endif
 
 
 #endif
