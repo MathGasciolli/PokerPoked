@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 14:27:08 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 18:38:20 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 20:16:50 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -37,20 +37,26 @@ void	aff_menu(int selected, char **aff)
   attroff(A_DIM);
 }
 
-void	do_thing_menu(int i)
+int	do_thing_menu(int i)
 {
   attroff(A_BOLD);
   if (i == 0)
-    clear();
-  /*else if (i == 1)
-    open_settings();*/
+    {
+      clear();
+      return (i);
+    }
+  else if (i == 1)
+    {
+      open_settings();
+      return (i);
+    }
   else if (i == 2)
     close_screen();
 }
 
 int	aff_accueil()
 {
-  int	selected;
+  int selected;
   int	c;
   char	*aff[] = {
     "PLAY",
@@ -58,6 +64,7 @@ int	aff_accueil()
     "QUIT",
   };
 
+  clear();
   selected = 0;
   attron(A_BOLD);
   keypad(stdscr, TRUE);
@@ -68,6 +75,7 @@ int	aff_accueil()
   mvprintw(LINES/2 - 11, COLS/2 - 30, " |     |___|  | \\ |___ |  \\    |     |___| | \\ |___ |__/");
   c = 0;
   aff_menu(selected, aff);
+  refresh();
   while (c != 10)
     {
       c = getch();
@@ -83,9 +91,6 @@ int	aff_accueil()
 
 void	init_screen()
 {
-  int	i;
-
-  i = 0;
   initscr();
   start_color();
   cbreak();
@@ -93,7 +98,7 @@ void	init_screen()
   curs_set(0);
   noecho();
   clear();
-  do_thing_menu(aff_accueil(i));
+  while (do_thing_menu(aff_accueil()));
   clear();
 }
 

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 18:22:26 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 20:21:25 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -15,18 +15,30 @@ void	get_params(int fd)
   char	*input;
 
   input = get_next_line(fd);
+
   input = get_next_line(fd);
   jeu.stack = atoi(input);
+
   input = get_next_line(fd);
   jeu.blind = atoi(input);
+
   input = get_next_line(fd);
   jeu.ianame = input;
+
+  input = get_next_line(fd);
+  jeu.playername = input;
+
   input = get_next_line(fd);
   jeu.button_forces = input[0];
+
+  input = get_next_line(fd);
+  jeu.button_pause = input[0];
+
+  input = get_next_line(fd);
+  jeu.button_exit = input[0];
+
   input = get_next_line(fd);
   jeu.button_restart = input[0];
-  input = get_next_line(fd);
-  jeu.button_menu = input[0];
 }
 
 void	init_game(char **av)
@@ -59,8 +71,9 @@ void	init_params()
   jeu.ianame = "John Smith";
   jeu.playername = "Player";
   jeu.button_forces = '<';
+  jeu.button_pause = 'p';
+  jeu.button_exit = 'q';
   jeu.button_restart = 'r';
-  jeu.button_menu = 27;
 }
 
 void	res_mises()

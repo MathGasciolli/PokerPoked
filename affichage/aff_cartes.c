@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 15:08:15 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 17:44:16 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:50:24 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -21,7 +21,7 @@ void	aff_cartes_IA()
   mvprintw(1, k, "|---------|\n");
   while (i < 7)
     {
-      mvprintw(i+2, k, "|*********|");
+      mvprintw(i+2, k, "|#########|");
       i++;
     }
   mvprintw(8, k, "|---------|\n");
@@ -30,7 +30,7 @@ void	aff_cartes_IA()
   mvprintw(1, k, "|---------|\n");
   while (i < 7)
     {
-      mvprintw(i+2, k, "|*********|");
+      mvprintw(i+2, k, "|#########|");
       i++;
     }
   mvprintw(8, k, "|---------|\n");

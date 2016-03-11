@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 16:50:03 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 18:59:11 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -163,7 +163,7 @@ void	finpartie(int ac, char **av)
   else
     {
       clear();
-      mvprintw(LINES/2, COLS/2 - 10, "Au revoir %s..", player.name);
+      mvprintw(LINES/2, COLS/2 - 10, "Bye %s..", player.name);
       refresh();
       sleep(2);
       close_screen();
