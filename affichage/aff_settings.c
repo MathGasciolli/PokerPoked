@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 18:25:51 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 20:45:37 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 20:51:14 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -45,17 +45,18 @@ void	aff_settings(int selected, char **option)
       if (i == selected)
 	{
 	  attron(A_REVERSE);
-	  mvprintw(8+3*i, 20, "%s: ", option[i]);
-	  mvprintw(8+3*i, COLS-strlen(params[i])-20, "'%s'", params[i]);
+	  mvprintw(8+3*i, 30, "%s: ", option[i]);
+	  mvprintw(8+3*i, COLS-strlen(params[i])-30, "'%s'", params[i]);
 	  attroff(A_REVERSE);
 	}
       else
 	{
-	  mvprintw(8+3*i, 20, "%s: ", option[i]);
-	  mvprintw(8+3*i, COLS-strlen(params[i])-20, "'%s'", params[i]);
+	  mvprintw(8+3*i, 30, "%s: ", option[i]);
+	  mvprintw(8+3*i, COLS-strlen(params[i])-30, "'%s'", params[i]);
 	}
       i++;
     }
+  mvprintw(3, COLS/2-4, "SETTINGS");
   mvprintw(LINES-3, COLS/2 - 16, "Press ESC to return to the menu");
   attroff(A_DIM);
   free(params);
