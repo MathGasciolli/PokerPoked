@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 14:31:43 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:45:52 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -42,10 +42,10 @@ int	get_action_menu()
 	    selected++;
 	  else if (c == 10)
 	    return (selected);
-	  else if (c == 27)
+	  else if (c == jeu.button_menu)
 	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
-	  else if (c == '<')
+	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
 	  aff_choix(selected);
 	}
@@ -65,10 +65,10 @@ int	get_action_menu()
 	    selected++;
 	  else if (c == 10)
 	    return (selected);
-	  else if (c == 27)
+	  else if (c == jeu.button_menu)
 	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
-	  else if (c == '<')
+	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
 	  aff_choix(selected);
 	}
@@ -82,12 +82,12 @@ int	get_action_menu()
       while (c != 10)
 	{
 	  c = getch();
-	  if (c == 27)
+	  if (c == jeu.button_menu)
 	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
 	  else if (c == 10)
 	    return (selected);
-	  else if (c == '<')
+	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
 	  aff_choix(selected);
 	}

@@ -5,28 +5,10 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 16:40:23 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:50:59 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
-
-
-void	my_putchar(char s)
-{
-  write(1, &s, 1);
-}
-
-void	my_putstr(char *s)
-{
-  int	i;
-
-  i = 0;
-  while (s[i])
-    {
-      my_putchar(s[i]);
-      i++;
-    }
-}
 
 void	get_params(int fd)
 {

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Thu Mar 10 17:19:26 2016 Mathieu GASCIOLLI
+** Last update Fri Mar 11 16:50:03 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -148,17 +148,17 @@ void	finpartie(int ac, char **av)
     mvprintw(LINES/2, COLS/2 - 11, "You lost the game ! :-(");
   else
     mvprintw(LINES/2, COLS/2 - 11, "You won the game ! :-)");
-  mvprintw(LINES/2 + 2, COLS/2 - 10, "Press R to restart !");
+  mvprintw(LINES/2 + 2, COLS/2 - 10, "Press '%s' to restart !", jeu.button_restart);
   mvprintw(LINES/2+3, COLS/2 - 17, "Or press something else to quit !");
   keypad(stdscr, TRUE);
   c = getch();
-  if (c == 'r')
+  if (c == jeu.button_restart)
     {
       clear();
       mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
       refresh();
       sleep(2);
-      main(ac, av);
+      main(0, av);
     }
   else
     {
