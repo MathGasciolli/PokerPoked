@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 20:21:25 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 02:39:05 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -61,6 +61,7 @@ void	init_game(char **av)
       sleep(1);
       fd = open(dest,O_RDONLY);
       get_params(fd);
+      close(fd);
     }
 }
 

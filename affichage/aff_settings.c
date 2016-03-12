@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 18:25:51 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 20:51:14 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 01:33:55 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -57,7 +57,8 @@ void	aff_settings(int selected, char **option)
       i++;
     }
   mvprintw(3, COLS/2-4, "SETTINGS");
-  mvprintw(LINES-3, COLS/2 - 16, "Press ESC to return to the menu");
+  mvprintw(LINES-4, COLS/2 - 17, "Press 'fin' to export your config");
+  mvprintw(LINES-3, COLS/2 - 17, "Press 'ESC' to return to the menu");
   attroff(A_DIM);
   free(params);
 }
@@ -65,20 +66,66 @@ void	aff_settings(int selected, char **option)
 void	modif(int i)
 {
   char	c;
+  char	*tmp;
 
+  tmp = malloc(100 * sizeof(char));
   clear();
   refresh();
   if (i == 0)
     {
+      echo();
+      curs_set(1);
+      mvprintw(LINES/2 - 5, COLS/2 - 11, "Enter initial bankroll");
+      mvscanw(LINES/2, COLS/2 - 3, "%s", tmp);
+      jeu.stack = atoi(tmp);
+      if (jeu.stack < 0)
+	jeu.stack = 0;
+      curs_set(0);
+      noecho();
     }
   else if (i == 1)
     {
+      echo();
+      curs_set(1);
+      mvprintw(LINES/2 - 5, COLS/2 - 9, "Enter blinds amount");
+      mvscanw(LINES/2, COLS/2 - 3, "%s", tmp);
+      jeu.blind = atoi(tmp);
+      if (jeu.blind < 0)
+	jeu.blind = 0;
+      curs_set(0);
+      noecho();
     }
   else if (i == 2)
     {
+      echo();
+      curs_set(1);
+      jeu.ianame = malloc(100 * sizeof(char));
+      mvprintw(LINES/2 - 5, COLS/2 - 10, "Enter IA name");
+      mvscanw(LINES/2, COLS/2 - 8, "%[^\n]", jeu.ianame);
+      while (strlen(jeu.ianame) <= 2){
+	mvscanw(LINES/2, COLS/2 - 8, "%[^\n]", jeu.ianame);
+	if (strlen(jeu.ianame) <= 2)
+	  mvprintw(LINES/2, COLS/2 -8, "   ");
+	refresh();
+      }
+      curs_set(0);
+      noecho();
     }
   else if (i == 3)
     {
+      echo();
+      curs_set(1);
+      jeu.playername = malloc(100 * sizeof(char));
+      mvprintw(LINES/2 - 5, COLS/2 - 10, "Enter your name");
+      mvscanw(LINES/2, COLS/2 - 8, "%[^\n]", jeu.playername);
+      while (strlen(jeu.playername) <= 2){
+	mvscanw(LINES/2, COLS/2 - 8, "%[^\n]", jeu.playername);
+	if (strlen(jeu.playername) <= 2)
+	  mvprintw(LINES/2, COLS/2 -8, "   ");
+	refresh();
+      }
+      curs_set(0);
+      noecho();
     }
   else if (i == 4)
     {
@@ -104,6 +151,7 @@ void	modif(int i)
       c = getch();
       jeu.button_restart = c;
     }
+  free(tmp);
 }
 
 void	open_settings()
@@ -134,6 +182,8 @@ void	open_settings()
 	selected--;
       else if (c == KEY_DOWN && selected < 7)
 	selected++;
+      else if (c == 360)
+	export_config();
       else if (c == 27)
 	break;
       else if (c == 10)
