@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 19:41:04 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 03:03:58 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -26,6 +26,7 @@ int	get_action_menu()
 {
   int	selected;
   int	c;
+  char	**av;
 
   if (situation != ALLIN && situation != FOLD)
     {
@@ -43,8 +44,34 @@ int	get_action_menu()
 	  else if (c == 10)
 	    return (selected);
 	  else if (c == jeu.button_exit)
-	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
+	  else if (c == jeu.button_pause)
+	    {
+	      c = 0;
+	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      refresh();
+	      while (c != jeu.button_pause)
+		c = getch();
+	      mvprintw(3, COLS/2 - 2, "      ");
+	      refresh();
+	    }
+	  else if (c == jeu.button_restart)
+	      {
+		clear();
+		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
+		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		refresh();
+		c = 0;
+		c = getch();
+		if (c == jeu.button_restart)
+		  {
+		    clear();
+		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    refresh();
+		    sleep(2);
+		    main(0, av);
+		  }
+	      }
 	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
 	  aff_choix(selected);
@@ -66,8 +93,34 @@ int	get_action_menu()
 	  else if (c == 10)
 	    return (selected);
 	  else if (c == jeu.button_exit)
-	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
+	  else if (c == jeu.button_pause)
+	    {
+	      c = 0;
+	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      refresh();
+	      while (c != jeu.button_pause)
+		c = getch();
+	      mvprintw(3, COLS/2 - 2, "      ");
+	      refresh();
+	    }
+	  else if (c == jeu.button_restart)
+	      {
+		clear();
+		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
+		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		refresh();
+		c = 0;
+		c = getch();
+		if (c == jeu.button_restart)
+		  {
+		    clear();
+		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    refresh();
+		    sleep(2);
+		    main(0, av);
+		  }
+	      }
 	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
 	  aff_choix(selected);
@@ -83,8 +136,34 @@ int	get_action_menu()
 	{
 	  c = getch();
 	  if (c == jeu.button_exit)
-	    //	    aff_menu_ingame(selected);
 	    quitter_prog();
+	  else if (c == jeu.button_pause)
+	    {
+	      c = 0;
+	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      refresh();
+	      while (c != jeu.button_pause)
+		c = getch();
+	      mvprintw(3, COLS/2 - 2, "      ");
+	      refresh();
+	    }
+	  else if (c == jeu.button_restart)
+	      {
+		clear();
+		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
+		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		refresh();
+		c = 0;
+		c = getch();
+		if (c == jeu.button_restart)
+		  {
+		    clear();
+		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    refresh();
+		    sleep(2);
+		    main(0, av);
+		  }
+	      }
 	  else if (c == 10)
 	    return (selected);
 	  else if (c == jeu.button_forces)
