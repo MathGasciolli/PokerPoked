@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 18:17:09 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 01:38:55 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 17:26:37 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -71,28 +71,55 @@ void	ia_bet(int amount)
 void	ias_turn()
 {
   int	act;
+  int	i;
 
   mvprintw(5, COLS/2 - 5, "%s's turn..", ia.name);
   refresh();
+  i = rand()%5;
   sleep(1);
   if (check_board() == PREFLOP)
-    act = ia_preflop();
+    act = ia_preflop(i);
   else if (check_board() == FLOP)
-    act = ia_flop();
+    act = ia_flop(i);
   else if (check_board() == TURN)
-    act = ia_turn();
+    act = ia_turn(i);
   else if (check_board() == RIVER)
-    act = ia_river();
-  if (act == 0)
+    act = ia_river(i);
+  if (act == 0){
+    mvprintw(5, COLS/2 - 5, "                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s folds", ia.name);
+    refresh();
+    sleep(1);
     ia_fold();
-  else if (act == 1)
+  }
+  else if (act == 1){
+    mvprintw(5, COLS/2 - 5, "                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s checks", ia.name);
+    refresh();
+    sleep(1);
     ia_see();
-  else if (act == 2)
+  }
+  else if (act == 2){
+    mvprintw(5, COLS/2 - 5, "                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s calls", ia.name);
+    refresh();
+    sleep(1);
     ia_call();
-  else if (act == 3)
+  }
+  else if (act == 3){
+    mvprintw(5, COLS/2 - 5, "                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s is allin !!", ia.name);
+    refresh();
+    sleep(1);
     ia_allin();
-  else if (act > 4)
+  }
+  else if (act > 4){
+    mvprintw(5, COLS/2 - 5, "                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s bets", ia.name);
+    refresh();
+    sleep(1);
     ia_bet(act);
+  }
   mvprintw(5, COLS/2 - 5, "                                                  ");
   refresh();
 }

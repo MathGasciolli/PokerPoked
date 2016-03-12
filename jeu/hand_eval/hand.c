@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 12:40:41 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 17:17:56 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -470,25 +470,25 @@ int	aff_strength(int end)
 
       move(LINES-2, 3);
       if (points1 == 1)
-	printw("(1/10) High Card (%s)", int_rank(highCard1));
+	printw("High Card (%s)", int_rank(highCard1));
       else if (points1 == 2)
-	printw("(2/10) One Pair (%s)", int_rank(type1));
+	printw("One Pair (%s)", int_rank(type1));
       else if (points1 == 3)
-	printw("(3/10) Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
       else if (points1 == 4)
-	printw("(4/10) Three of a kind (%s)", int_rank(type1));
+	printw("Three of a kind (%s)", int_rank(type1));
       else if (points1 == 5)
-	printw("(5/10) Straight (%s high)", int_rank(type1));
+	printw("Straight (%s high)", int_rank(type1));
       else if (points1 == 6)
-	printw("(6/10) Flush (%s high)", int_rank(highCard1));
+	printw("Flush (%s high)", int_rank(highCard1));
       else if (points1 == 7)
-	printw("(7/10) Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
       else if (points1 == 8)
-	printw("(8/10) Four of a kind (%s)", int_rank(type1));
+	printw("Four of a kind (%s)", int_rank(type1));
       else if (points1 == 9)
-	printw("(9/10) Straight Flush (%s high)", int_rank(type1));
+	printw("Straight Flush (%s high)", int_rank(type1));
       else if (points1 == 10)
-	printw("(10/10) Royal Flush !");
+	printw("Royal Flush !");
     }
   else if (end == 1)
     {
