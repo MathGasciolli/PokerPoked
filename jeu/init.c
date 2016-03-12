@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 02:39:05 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 15:01:29 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -162,6 +162,7 @@ int	choose_name()
 void	some_inits()
 {
   set_players_datas();
+  forces_hands = 0;
   situation = CHECK;
   dealer = 1;
   pot = 0;

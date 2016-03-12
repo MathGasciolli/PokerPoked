@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 03:03:58 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 15:00:03 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -71,9 +71,20 @@ int	get_action_menu()
 		    sleep(2);
 		    main(0, av);
 		  }
+		else
+		  {
+		    clear();
+		    affichage_hud();
+		    refresh();
+		  }
 	      }
-	  else if (c == jeu.button_forces)
-	    aff_forces_hands();
+	  else if (c == jeu.button_forces){
+	    if (forces_hands == 0)
+	      forces_hands = 1;
+	    else if (forces_hands == 1)
+	      forces_hands = 0;
+	  }
+	  aff_forces_hands();
 	  aff_choix(selected);
 	}
     }
@@ -120,6 +131,12 @@ int	get_action_menu()
 		    sleep(2);
 		    main(0, av);
 		  }
+		else
+		  {
+		    clear();
+		    affichage_hud();
+		    refresh();
+		  }
 	      }
 	  else if (c == jeu.button_forces)
 	    aff_forces_hands();
@@ -162,6 +179,12 @@ int	get_action_menu()
 		    refresh();
 		    sleep(2);
 		    main(0, av);
+		  }
+		else
+		  {
+		    clear();
+		    affichage_hud();
+		    refresh();
 		  }
 	      }
 	  else if (c == 10)

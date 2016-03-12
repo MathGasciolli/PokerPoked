@@ -5,19 +5,17 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 14:28:39 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 14:45:20 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 15:00:55 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
-
-int	forces_hands = 0;
 
 void	aff_forces_hands()
 {
   int	i;
 
   i = 0;
-  if (forces_hands == 0)
+  if (forces_hands == 1)
     {
       mvprintw(1, COLS-25, "HANDS STRENGTH");
       mvprintw(3, COLS-30, "1: High Card");
@@ -31,9 +29,8 @@ void	aff_forces_hands()
       mvprintw(11, COLS-30, "9: Straight Flush");
       mvprintw(12, COLS-30, "10: Royal Flush");
       refresh();
-      forces_hands = 1;
     }
-  else
+  else if (forces_hands == 0)
     {
       while (i < 12)
 	{
@@ -41,6 +38,5 @@ void	aff_forces_hands()
 	  i++;
 	}
       refresh();
-      forces_hands = 0;
     }
 }
