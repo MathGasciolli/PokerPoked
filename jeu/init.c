@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 15:01:29 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 16:58:11 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -41,28 +41,25 @@ void	get_params(int fd)
   jeu.button_restart = input[0];
 }
 
-void	init_game(char **av)
+void	init_game(int i)
 {
   int	fd;
   char	*dest;
+  char	**opt;
 
+  opt = file_names(opt);
   dest = malloc(50 * sizeof(char));
-  strcat(dest, "config/");
-  strcat(dest, av[1]);
+  dest = strdup("config/");
+  strcat(dest, opt[i]);
   if (access(dest, F_OK))
-    {
-      printf("File %s not found.\nLet's start with default params..\n", av[1]);
-      sleep(1);
-      init_params();
-    }
+    init_params();
   else
     {
-      printf("File %s found.\nLoading params..\n", av[1]);
-      sleep(1);
       fd = open(dest,O_RDONLY);
       get_params(fd);
       close(fd);
     }
+  free(opt);
 }
 
 void	init_params()

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:47:15 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 15:53:45 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 16:27:11 2016 Mathieu GASCIOLLI
 */
 
 #ifndef PROTOTYPES_H_
@@ -45,5 +45,6 @@ void	act_bet();
 void	act_call();
 void	act_raise();
 char	*get_next_line(const int);
+char	**file_names(char **);
 
 #endif

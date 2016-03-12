@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 15:00:34 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 15:28:21 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
@@ -44,7 +45,6 @@ typedef struct s_card
   int	rank;
   int	suit;
 } Card;
-
 
 // GLOBALES
 

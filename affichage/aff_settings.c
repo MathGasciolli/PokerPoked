@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 18:25:51 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 01:33:55 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 16:34:27 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -15,8 +15,8 @@ void	aff_settings(int selected, char **option)
   int	i;
   char	**params;
 
-  params = malloc(50 * sizeof(char*));
-  for (i=0;i<8;i++)
+  params = malloc(10 * sizeof(char*));
+  for (i=0;i<9;i++)
     params[i] = malloc(150 * sizeof(char));
   sprintf(params[0], "%d", jeu.stack);
   sprintf(params[1], "%d", jeu.blind);
@@ -40,15 +40,22 @@ void	aff_settings(int selected, char **option)
     sprintf(params[7], "%c", jeu.button_restart);
   i = 0;
   attron(A_DIM);
-  while (option[i])
+  while (i < 9)
     {
-      if (i == selected)
+      if (i == selected && i != 8)
 	{
 	  attron(A_REVERSE);
 	  mvprintw(8+3*i, 30, "%s: ", option[i]);
 	  mvprintw(8+3*i, COLS-strlen(params[i])-30, "'%s'", params[i]);
 	  attroff(A_REVERSE);
 	}
+      else if (i == 8 && i != selected)
+	mvprintw(8+4*i, COLS/2 - (strlen(option[i])/2), "%s", option[i]);
+      else if (i == 8 && i == selected){
+	attron(A_REVERSE);
+	mvprintw(8+4*i, COLS/2 - (strlen(option[i])/2), "%s", option[i]);
+	attroff(A_REVERSE);
+      }
       else
 	{
 	  mvprintw(8+3*i, 30, "%s: ", option[i]);
@@ -151,24 +158,37 @@ void	modif(int i)
       c = getch();
       jeu.button_restart = c;
     }
+  else if (i == 8)
+    aff_config();
   free(tmp);
+}
+
+void	my_putchar(char z)
+{
+  write(1, &z, 1);
 }
 
 void	open_settings()
 {
   int	selected;
-  int	c;
-  char	*option[] = {
-    "INITIAL BANKROLL",
-    "BLIND AMOUNT",
-    "IA NAME",
-    "PLAYER NAME",
-    "SHOW HANDS STRENGTH",
-    "PAUSE BUTTON",
-    "EXIT BUTTON",
-    "RESTART BUTTON",
-  };
+  int	c = 0;
+  char	**option;
 
+  option = malloc(10 * sizeof(char *));
+  while (c < 10)
+    {
+      option[c] = malloc(30 * sizeof(char));
+      c++;
+    }
+  option[0] = "INITIAL BANKROLL";
+  option[1] = "BLIND AMOUNT";
+  option[2] = "IA NAME";
+  option[3] = "PLAYER NAME";
+  option[4] = "SHOW HANDS STRENGTH";
+  option[5] = "PAUSE BUTTON";
+  option[6] = "EXIT BUTTON";
+  option[7] = "RESTART BUTTON";
+  option[8] = "LOAD ANOTHER CONFIG";
   clear();
   selected = 0;
   keypad(stdscr, TRUE);
@@ -180,7 +200,7 @@ void	open_settings()
       c = getch();
       if (c == KEY_UP && selected > 0)
 	selected--;
-      else if (c == KEY_DOWN && selected < 7)
+      else if (c == KEY_DOWN && selected < 8)
 	selected++;
       else if (c == 360)
 	export_config();
@@ -192,4 +212,5 @@ void	open_settings()
       aff_settings(selected, option);
       refresh();
     }
+  free(option);
 }
