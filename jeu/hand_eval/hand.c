@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 17:17:56 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 17:52:15 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -489,6 +489,8 @@ int	aff_strength(int end)
 	printw("Straight Flush (%s high)", int_rank(type1));
       else if (points1 == 10)
 	printw("Royal Flush !");
+
+      return points2;
     }
   else if (end == 1)
     {

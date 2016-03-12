@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 15:28:21 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 18:33:54 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -65,6 +65,7 @@ int	pl_check;
 Card	*hand1;
 Card	*hand2;
 int	forces_hands;
+int	key;
 
 // Macros
 

@@ -5,10 +5,12 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 18:17:09 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 17:26:37 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 18:28:25 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
+
+int	todo;
 
 void	ia_fold()
 {
@@ -61,11 +63,15 @@ void	ia_allin()
 
 void	ia_bet(int amount)
 {
-  pot = pot + amount;
-  ia.mise = ia.mise + amount;
-  ia.argent = ia.argent - amount;
-  situation = BET;
-  last_action = BET;
+  if (player.mise > 0 && player.mise == ia.mise)
+    ia_see();
+  else{
+    pot = pot + amount;
+    ia.mise = ia.mise + amount;
+    ia.argent = ia.argent - amount;
+    situation = BET;
+    last_action = BET;
+  }
 }
 
 void	ias_turn()
