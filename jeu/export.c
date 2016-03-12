@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar 12 01:34:44 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 02:42:06 2016 Mathieu GASCIOLLI
+** Last update Sat Mar 12 02:49:04 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -63,8 +63,8 @@ void	export_config()
   free(buf);
   close(fd);
   clear();
+  mvprintw(LINES/2, COLS/2 - (10+strlen(title)), "Config %s successfully created !", title);
   refresh();
-  mvprintw(LINES/2, COLS/2 - (16+strlen(title)), "Config %s successfully created !", title);
   sleep(2);
   free(path);
   free(title);
