@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 16:27:42 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 17:52:15 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:41:11 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -439,13 +439,13 @@ char    *int_rank(int val)
 
   valeur = malloc(3 * sizeof(char));
   if (val == 14)
-    valeur = "Ace";
+    valeur = jeu.langue.ace;
   else if (val == 11)
-    valeur = "Jack";
+    valeur = jeu.langue.jack;
   else if (val == 12)
-    valeur = "Queen";
+    valeur = jeu.langue.queen;
   else if (val == 13)
-    valeur = "King";
+    valeur = jeu.langue.king;
   else if (val == 10)
     valeur = "10";
   else
@@ -470,25 +470,25 @@ int	aff_strength(int end)
 
       move(LINES-2, 3);
       if (points1 == 1)
-	printw("High Card (%s)", int_rank(highCard1));
+	printw("%s (%s)", jeu.langue.high, int_rank(highCard1));
       else if (points1 == 2)
-	printw("One Pair (%s)", int_rank(type1));
+	printw("%s (%s)", jeu.langue.pair, int_rank(type1));
       else if (points1 == 3)
-	printw("Two Pairs (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("%s (%s, %s)", jeu.langue.twopair, int_rank(type1), int_rank(secondType1));
       else if (points1 == 4)
-	printw("Three of a kind (%s)", int_rank(type1));
+	printw("%s (%s)", jeu.langue.trips, int_rank(type1));
       else if (points1 == 5)
-	printw("Straight (%s high)", int_rank(type1));
+	printw("%s (%s high)", jeu.langue.str, int_rank(type1));
       else if (points1 == 6)
-	printw("Flush (%s high)", int_rank(highCard1));
+	printw("%s (%s high)", jeu.langue.flush, int_rank(highCard1));
       else if (points1 == 7)
-	printw("Full House (%s, %s)", int_rank(type1), int_rank(secondType1));
+	printw("%s (%s, %s)", jeu.langue.full, int_rank(type1), int_rank(secondType1));
       else if (points1 == 8)
-	printw("Four of a kind (%s)", int_rank(type1));
+	printw("%s (%s)", jeu.langue.four, int_rank(type1));
       else if (points1 == 9)
-	printw("Straight Flush (%s high)", int_rank(type1));
+	printw("%s (%s high)", jeu.langue.str_fl, int_rank(type1));
       else if (points1 == 10)
-	printw("Royal Flush !");
+	printw("%s", jeu.langue.royal);
 
       return points2;
     }

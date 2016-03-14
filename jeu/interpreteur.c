@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:41:52 2016 Mathieu GASCIOLLI
-** Last update Fri Mar  4 01:42:05 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:29:14 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -39,12 +39,12 @@ char    *interpreteur_couleur(carte carte)
 
   couleur = malloc(10*sizeof(char));
   if (carte.couleur == PIQUE)
-    couleur = "PIQUE";
+    couleur = jeu.langue.pique;
   else if (carte.couleur == CARREAU)
-    couleur = "CARREAU";
+    couleur = jeu.langue.carreau;
   else if (carte.couleur == TREFLE)
-    couleur = "TREFLE";
+    couleur = jeu.langue.trefle;
   else if (carte.couleur == COEUR)
-    couleur = "COEUR";
+    couleur = jeu.langue.coeur;
   return (couleur);
 }

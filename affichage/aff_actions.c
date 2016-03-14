@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 18:13:00 2016 Mathieu GASCIOLLI
-** Last update Sat Mar  5 17:49:33 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:43:20 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -23,9 +23,9 @@ void	aff_choix(int selected)
   if (situation == CHECK)
     {
       char *option[] = {
-	"FOLD",
-	"CHECK",
-	"BET",
+	jeu.langue.fold,
+	jeu.langue.check,
+	jeu.langue.bet,
       };
       while (i < 3)
 	{
@@ -45,9 +45,9 @@ void	aff_choix(int selected)
   else if (situation == BET)
     {
       char *option[] = {
-	"FOLD",
-	"CALL",
-	"RAISE",
+	jeu.langue.fold,
+	jeu.langue.call,
+	jeu.langue.raise,
       };
       while (i < 3)
 	{
@@ -73,8 +73,8 @@ void	aff_choix(int selected)
   else if (situation == ALLIN)
     {
       char *option[] = {
-	"FOLD",
-	"CALL",
+	jeu.langue.fold,
+	jeu.langue.call,
       };
       while (i < 2)
 	{

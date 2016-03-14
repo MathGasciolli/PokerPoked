@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 14:27:08 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 20:16:50 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 14:45:29 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -59,9 +59,9 @@ int	aff_accueil()
   int selected;
   int	c;
   char	*aff[] = {
-    "PLAY",
-    "SETTINGS",
-    "QUIT",
+    jeu.langue.menu_play,
+    jeu.langue.menu_set,
+    jeu.langue.menu_quit,
   };
 
   clear();

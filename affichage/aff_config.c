@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar 12 15:17:39 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 16:52:51 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 14:41:03 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -72,7 +72,7 @@ void	aff_config_files(int selected)
       mvprintw(10 + 2*i, COLS/2 - strlen(opt[i])/2, "%s", opt[i]);
     i++;
   }
-  mvprintw(3, COLS/2 - 15, "List of CONFIG files available");
+  mvprintw(3, COLS/2 - 15, "%s", jeu.langue.liste_config);
   refresh();
   attroff(A_DIM);
   free(opt);

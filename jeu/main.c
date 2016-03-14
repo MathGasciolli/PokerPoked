@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 16:39:31 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:30:03 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -13,7 +13,7 @@
 void	quitter_prog()
 {
   clear();
-  mvprintw(LINES/2, COLS/2 - 10, "Bye %s..", player.name);
+  mvprintw(LINES/2, COLS/2 - 10, "%s %s !", jeu.langue.bye, jeu.playername);
   refresh();
   sleep(2);
   close_screen();
@@ -63,6 +63,8 @@ void	deroulement(int o)
 int	main(int ac, char **av)
 {
   srand(time(NULL));
+  lang_english();
+  lang_francais();
   init_params();
   init_screen();
   some_inits();

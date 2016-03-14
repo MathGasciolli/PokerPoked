@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 18:34:41 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:22:40 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -48,7 +48,7 @@ int	get_action_menu()
 	  else if (c == jeu.button_pause)
 	    {
 	      c = 0;
-	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      mvprintw(3, COLS/2 - 2, "%s", jeu.langue.paused);
 	      refresh();
 	      while (c != jeu.button_pause)
 		c = getch();
@@ -58,15 +58,15 @@ int	get_action_menu()
 	  else if (c == jeu.button_restart)
 	      {
 		clear();
-		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
-		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		mvprintw(LINES/2, COLS/2 - 15, "%s", jeu.langue.want_to_res);
+		mvprintw(LINES/2+1, COLS/2 - 25, "%s", jeu.langue.press_or_not);
 		refresh();
 		c = 0;
 		c = getch();
 		if (c == jeu.button_restart)
 		  {
 		    clear();
-		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
 		    main(0, av);
@@ -108,7 +108,7 @@ int	get_action_menu()
 	  else if (c == jeu.button_pause)
 	    {
 	      c = 0;
-	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      mvprintw(3, COLS/2 - 2, "%s", jeu.langue.paused);
 	      refresh();
 	      while (c != jeu.button_pause)
 		c = getch();
@@ -118,15 +118,15 @@ int	get_action_menu()
 	  else if (c == jeu.button_restart)
 	      {
 		clear();
-		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
-		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		mvprintw(LINES/2, COLS/2 - 15, "%s", jeu.langue.want_to_res);
+		mvprintw(LINES/2+1, COLS/2 - 25, "%s", jeu.langue.press_or_not);
 		refresh();
 		c = 0;
 		c = getch();
 		if (c == jeu.button_restart)
 		  {
 		    clear();
-		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
 		    main(0, av);
@@ -157,7 +157,7 @@ int	get_action_menu()
 	  else if (c == jeu.button_pause)
 	    {
 	      c = 0;
-	      mvprintw(3, COLS/2 - 2, "PAUSED");
+	      mvprintw(3, COLS/2 - 2, "%s", jeu.langue.paused);
 	      refresh();
 	      while (c != jeu.button_pause)
 		c = getch();
@@ -167,15 +167,15 @@ int	get_action_menu()
 	  else if (c == jeu.button_restart)
 	      {
 		clear();
-		mvprintw(LINES/2, COLS/2 - 15, "Do you really want to restart ?");
-		mvprintw(LINES/2+1, COLS/2 - 25, "(Press '%c' another time, or press something else)", jeu.button_restart);
+		mvprintw(LINES/2, COLS/2 - 15, "%s", jeu.langue.want_to_res);
+		mvprintw(LINES/2+1, COLS/2 - 25, "%s", jeu.langue.press_or_not);
 		refresh();
 		c = 0;
 		c = getch();
 		if (c == jeu.button_restart)
 		  {
 		    clear();
-		    mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
 		    main(0, av);

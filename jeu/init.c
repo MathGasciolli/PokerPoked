@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:43:02 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 16:58:11 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 12:44:18 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -39,6 +39,14 @@ void	get_params(int fd)
 
   input = get_next_line(fd);
   jeu.button_restart = input[0];
+
+  input = get_next_line(fd);
+  jeu.lang = input;
+
+  if (strcmp(jeu.lang, "english") == 0)
+    jeu.langue = english;
+  else if (strcmp(jeu.lang, "francais") == 0)
+    jeu.langue = francais;
 }
 
 void	init_game(int i)
@@ -72,6 +80,8 @@ void	init_params()
   jeu.button_pause = 'p';
   jeu.button_exit = 'q';
   jeu.button_restart = 'r';
+  jeu.lang = "english";
+  jeu.langue = english;
 }
 
 void	res_mises()

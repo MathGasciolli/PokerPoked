@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 17:05:34 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 18:32:30 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 14:44:30 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -20,7 +20,7 @@ void	aff_dealer()
 
 void	aff_pot()
 {
-  mvprintw(LINES/2 - 10, COLS/2 - 4, "Pot: %d", pot);
+  mvprintw(LINES/2 - 10, COLS/2 - 4, "%s%d", jeu.langue.pot, pot);
 }
 
 void	aff_noms()

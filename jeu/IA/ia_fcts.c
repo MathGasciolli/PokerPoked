@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 18:17:09 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 18:28:25 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 15:12:24 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -79,7 +79,7 @@ void	ias_turn()
   int	act;
   int	i;
 
-  mvprintw(5, COLS/2 - 5, "%s's turn..", ia.name);
+  mvprintw(5, COLS/2 - 5, "%s%s", ia.name, jeu.langue.iaturn);
   refresh();
   i = rand()%5;
   sleep(1);
@@ -92,40 +92,40 @@ void	ias_turn()
   else if (check_board() == RIVER)
     act = ia_river(i);
   if (act == 0){
-    mvprintw(5, COLS/2 - 5, "                                                  ");
-    mvprintw(5, COLS/2 - 5, "%s folds", ia.name);
+    mvprintw(5, COLS/2 - 5, "                                                                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s %s", ia.name, jeu.langue.iafold);
     refresh();
     sleep(1);
     ia_fold();
   }
   else if (act == 1){
-    mvprintw(5, COLS/2 - 5, "                                                  ");
-    mvprintw(5, COLS/2 - 5, "%s checks", ia.name);
+    mvprintw(5, COLS/2 - 5, "                                                                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s %s", ia.name, jeu.langue.iacheck);
     refresh();
     sleep(1);
     ia_see();
   }
   else if (act == 2){
-    mvprintw(5, COLS/2 - 5, "                                                  ");
-    mvprintw(5, COLS/2 - 5, "%s calls", ia.name);
+    mvprintw(5, COLS/2 - 5, "                                                                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s %s", ia.name, jeu.langue.iacall);
     refresh();
     sleep(1);
     ia_call();
   }
   else if (act == 3){
-    mvprintw(5, COLS/2 - 5, "                                                  ");
-    mvprintw(5, COLS/2 - 5, "%s is allin !!", ia.name);
+    mvprintw(5, COLS/2 - 5, "                                                                                                  ");
+    mvprintw(5, COLS/2 - 5, "%s %s", ia.name, jeu.langue.iaallin);
     refresh();
     sleep(1);
     ia_allin();
   }
   else if (act > 4){
-    mvprintw(5, COLS/2 - 5, "                                                  ");
-    mvprintw(5, COLS/2 - 5, "%s bets", ia.name);
+    mvprintw(5, COLS/2 - 5, "                                                                                                   ");
+    mvprintw(5, COLS/2 - 5, "%s %s", ia.name, jeu.langue.iabet);
     refresh();
     sleep(1);
     ia_bet(act);
   }
-  mvprintw(5, COLS/2 - 5, "                                                  ");
+  mvprintw(5, COLS/2 - 5, "                                                                                                     ");
   refresh();
 }

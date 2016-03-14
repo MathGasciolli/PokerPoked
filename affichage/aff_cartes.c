@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 15:08:15 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 18:50:24 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 15:08:30 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -62,13 +62,13 @@ void	aff_cartes_IA_end()
 	  mvprintw(1+(8-i), 5, "| ");
 	  color_carte(IA[j].couleur);
 	  if (IA[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (IA[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (IA[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (IA[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(IA[j].couleur);
 	  mvprintw(1+(8-i), 15, "|");
 	}
@@ -99,13 +99,13 @@ void	aff_cartes_IA_end()
 	  mvprintw(1+(8-i), 18, "| ");
 	  color_carte(IA[j].couleur);
 	  if (IA[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (IA[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (IA[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (IA[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(IA[j].couleur);
 	  mvprintw(1+(8-i), 28, "|");
 	}
@@ -143,13 +143,13 @@ void	aff_cartes_joueur()
 	  mvprintw(LINES - (i + 4), COLS/2 - 12, "| ");
 	  color_carte(joueur[j].couleur);
 	  if (joueur[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (joueur[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (joueur[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (joueur[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(joueur[j].couleur);
 	  mvprintw(LINES - (i + 4), COLS/2 - 2, "|");
 	}
@@ -180,13 +180,13 @@ void	aff_cartes_joueur()
 	  mvprintw(LINES - (i + 4), COLS/2 + 1, "| ");
 	  color_carte(joueur[j].couleur);
 	  if (joueur[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (joueur[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (joueur[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (joueur[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(joueur[j].couleur);
 	  mvprintw(LINES - (i + 4), COLS/2 + 11, "|");
 	}
@@ -203,7 +203,7 @@ void	aff_cartes_turn()
   int   i;
   int   j;
 
-  mvprintw(5, COLS/2 - 9, "Showing the Turn..");
+  mvprintw(5, COLS/2 - 9, "%s", jeu.langue.turn);
   j = 0;
   i = 8;
   while (i > 0)
@@ -225,13 +225,13 @@ void	aff_cartes_turn()
 	  mvprintw(LINES/2 - i, COLS/2 - 30, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 20, "|");
 	}
@@ -262,13 +262,13 @@ void	aff_cartes_turn()
 	  mvprintw(LINES/2 - i, COLS/2 - 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 8, "|");
 	}
@@ -299,13 +299,13 @@ void	aff_cartes_turn()
 	  mvprintw(LINES/2 - i, COLS/2 - 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 4, "|");
 	}
@@ -338,13 +338,13 @@ void	aff_cartes_turn()
 	  mvprintw(LINES/2 - i, COLS/2 + 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 16, "|");
 	}
@@ -364,7 +364,7 @@ void	aff_cartes_river()
   int   i;
   int   j;
 
-  mvprintw(5, COLS/2 - 9, "Showing the River..");
+  mvprintw(5, COLS/2 - 9, "%s", jeu.langue.river);
   j = 0;
   i = 8;
   while (i > 0)
@@ -386,13 +386,13 @@ void	aff_cartes_river()
 	  mvprintw(LINES/2 - i, COLS/2 - 30, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 20, "|");
 	}
@@ -423,13 +423,13 @@ void	aff_cartes_river()
 	  mvprintw(LINES/2 - i, COLS/2 - 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 8, "|");
 	}
@@ -460,13 +460,13 @@ void	aff_cartes_river()
 	  mvprintw(LINES/2 - i, COLS/2 - 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 4, "|");
 	}
@@ -497,13 +497,13 @@ void	aff_cartes_river()
 	  mvprintw(LINES/2 - i, COLS/2 + 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 16, "|");
 	}
@@ -536,13 +536,13 @@ void	aff_cartes_river()
 	  mvprintw(LINES/2 - i, COLS/2 + 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 28, "|");
 	}
@@ -562,7 +562,7 @@ void    aff_cartes_flop()
   int   i;
   int   j;
 
-  mvprintw(5, COLS/2 - 9, "Showing the Flop..");
+  mvprintw(5, COLS/2 - 9, "%s", jeu.langue.flop);
   j = 0;
   i = 8;
   refresh();
@@ -586,13 +586,13 @@ void    aff_cartes_flop()
 	  mvprintw(LINES/2 - i, COLS/2 - 30, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 20, "|");
 	}
@@ -625,13 +625,13 @@ void    aff_cartes_flop()
 	  mvprintw(LINES/2 - i, COLS/2 - 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 8, "|");
 	}
@@ -664,13 +664,13 @@ void    aff_cartes_flop()
 	  mvprintw(LINES/2 - i, COLS/2 - 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 4, "|");
 	}
@@ -711,13 +711,13 @@ void	aff_cartes_board()
 	  mvprintw(LINES/2 - i, COLS/2 - 30, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 20, "|");
 	}
@@ -748,13 +748,13 @@ void	aff_cartes_board()
 	  mvprintw(LINES/2 - i, COLS/2 - 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 - 8, "|");
 	}
@@ -785,13 +785,13 @@ void	aff_cartes_board()
 	  mvprintw(LINES/2 - i, COLS/2 - 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 4, "|");
 	}
@@ -822,13 +822,13 @@ void	aff_cartes_board()
 	  mvprintw(LINES/2 - i, COLS/2 + 6, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 16, "|");
 	}
@@ -859,13 +859,13 @@ void	aff_cartes_board()
 	  mvprintw(LINES/2 - i, COLS/2 + 18, "| ");
 	  color_carte(board[j].couleur);
 	  if (board[j].couleur == PIQUE)
-	    printw(" PIQUE ");
+	    printw(" %s ", jeu.langue.pique);
 	  else if (board[j].couleur == CARREAU)
-	    printw("CARREAU");
+	    printw("%s", jeu.langue.carreau);
 	  else if (board[j].couleur == TREFLE)
-	    printw("TREFLE ");
+	    printw("%s ", jeu.langue.trefle);
 	  else if (board[j].couleur == COEUR)
-	    printw(" COEUR ");
+	    printw(" %s ", jeu.langue.coeur);
 	  decolor_carte(board[j].couleur);
 	  mvprintw(LINES/2 - i, COLS/2 + 28, "|");
 	}

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Fri Mar 11 18:59:11 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:26:23 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -99,9 +99,9 @@ void    end_of_hand_0()
   if (situation == FOLD)
     {
       if (whofolded == PLAYERFOLD)
-	mvprintw(5, COLS/2 - 9, "You folded. %s wins the pot.", ia.name);
+	mvprintw(5, COLS/2 - 9, "%s", jeu.langue.youfolded);
       else if (whofolded == IAFOLD)
-	mvprintw(5, COLS/2 - 9, "%s folded. You win the pot.", ia.name);
+	mvprintw(5, COLS/2 - 9, "%s", jeu.langue.iafolded);
       get_action();
     }
   situation = CHECK;
@@ -132,9 +132,9 @@ void	end_of_hand_1()
   if (situation == FOLD)
     {
       if (whofolded == PLAYERFOLD)
-	mvprintw(5, COLS/2 - 9, "You folded. %s wins the pot.", ia.name);
+	mvprintw(5, COLS/2 - 9, "%s", jeu.langue.youfolded);
       else if (whofolded == IAFOLD)
-	mvprintw(5, COLS/2 - 9, "%s folded. You win the pot.", ia.name);
+	mvprintw(5, COLS/2 - 9, "%s", jeu.langue.iafolded);
       get_action();
     }
   situation = CHECK;
@@ -145,17 +145,17 @@ void	finpartie(int ac, char **av)
   int	c;
 
   if (player.argent == 0)
-    mvprintw(LINES/2, COLS/2 - 11, "You lost the game ! :-(");
+    mvprintw(LINES/2, COLS/2 - 11, "%s", jeu.langue.lost);
   else
-    mvprintw(LINES/2, COLS/2 - 11, "You won the game ! :-)");
-  mvprintw(LINES/2 + 2, COLS/2 - 10, "Press '%s' to restart !", jeu.button_restart);
-  mvprintw(LINES/2+3, COLS/2 - 17, "Or press something else to quit !");
+    mvprintw(LINES/2, COLS/2 - 11, "%s", jeu.langue.win);
+  mvprintw(LINES/2 + 2, COLS/2 - 10, "%s", jeu.langue.press_restart);
+  mvprintw(LINES/2+3, COLS/2 - 17, "%s", jeu.langue.press_quit);
   keypad(stdscr, TRUE);
   c = getch();
   if (c == jeu.button_restart)
     {
       clear();
-      mvprintw(LINES/2, COLS/2 - 10, "Let's Restart !! :-)");
+      mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
       refresh();
       sleep(2);
       main(0, av);
@@ -163,7 +163,7 @@ void	finpartie(int ac, char **av)
   else
     {
       clear();
-      mvprintw(LINES/2, COLS/2 - 10, "Bye %s..", player.name);
+      mvprintw(LINES/2, COLS/2 - 10, "%s %s !", jeu.langue.bye, jeu.playername);
       refresh();
       sleep(2);
       close_screen();

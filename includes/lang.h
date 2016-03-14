@@ -5,8 +5,11 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Mon Mar 14 10:05:24 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 10:34:24 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 11:21:25 2016 Mathieu GASCIOLLI
 */
+
+#ifndef LANG_H_
+#define LANG_H_
 
 typedef struct s_lang
 {
@@ -85,4 +88,6 @@ typedef struct s_lang
   char	*paused;
   char	*want_to_res;
   char	*press_or_not;
-} lang;
+}lang;
+
+#endif

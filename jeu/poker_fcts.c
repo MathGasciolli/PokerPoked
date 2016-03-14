@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:51:23 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 19:34:11 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 13:31:04 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -143,7 +143,7 @@ void    act_bet()
     {
       mvprintw(LINES-5, COLS-55, "                                      "); // TRES MOCHE !
       refresh();
-      mvprintw(LINES - 5, COLS - 55, "Enter amount: ");
+      mvprintw(LINES - 5, COLS - 55, "%s", jeu.langue.enteramount);
       scanw("%s", amount);
       refresh();
       bet = atoi(amount);
@@ -190,7 +190,7 @@ void    act_raise()
     {
       mvprintw(LINES-5, COLS-55, "                                      "); // TRES MOCHE !
       refresh();
-      mvprintw(LINES - 5, COLS - 55, "Enter amount: ");
+      mvprintw(LINES - 5, COLS - 55, "%s", jeu.langue.enteramount);
       scanw("%s", amount);
       refresh();
       bet = atoi(amount);
