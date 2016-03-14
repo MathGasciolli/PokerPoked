@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 15:08:15 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 15:08:30 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 15:45:20 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -354,7 +354,7 @@ void	aff_cartes_turn()
 	mvprintw(LINES/2 - i, COLS/2+6, "|---------|\n");
       i--;
     }
-  mvprintw(5, COLS/2 - 9, "                   ");
+  mvprintw(5, COLS/2 - 9, "                                                                                ");
   refresh();
   sleep(1);
 }
@@ -552,7 +552,7 @@ void	aff_cartes_river()
 	mvprintw(LINES/2 - i, COLS/2+18, "|---------|\n");
       i--;
     }
-  mvprintw(5, COLS/2 - 9, "                   ");
+  mvprintw(5, COLS/2 - 9, "                                                                                              ");
   refresh();
   sleep(1);
 }
@@ -680,7 +680,7 @@ void    aff_cartes_flop()
 	mvprintw(LINES/2 - i, COLS/2-6, "|---------|\n");
       i--;
     }
-  mvprintw(5, COLS/2 - 9, "                   ");
+  mvprintw(5, COLS/2 - 9, "                                                                                            ");
   refresh();
   sleep(1);
 }
