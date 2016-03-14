@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 16:11:51 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:41:56 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -63,7 +63,7 @@ void	deroulement(int o)
 int	main(int argc, char **argv, char **envp)
 {
   if (updating == 0)
-    execve("git pull", argv, envp);
+    system("git reset --hard origin/master");
   updating = 1;
   srand(time(NULL));
   lang_english();
