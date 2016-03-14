@@ -5,48 +5,39 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Mon Mar 14 17:07:44 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 17:56:32 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 22:15:09 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
 
-int mysql_connection(void)
+int main(int ac, char **av, char **env)
 {
-  //Déclaration du pointeur de structure de type MYSQL
-  MYSQL mysql;
-  //Initialisation de MySQL
-  mysql_init(&mysql);
-  //Options de connexion
-  mysql_options(&mysql,MYSQL_READ_DEFAULT_GROUP,"option");
-
-  //Si la connexion réussie...
-  if(mysql_real_connect(&mysql,"freehost-f.fr","c5_CB","bawarebel","bawa_CB",0,NULL,0))
-    {
-      //Requête qui sélectionne tout dans ma table scores
-      mysql_query(&mysql, "SELECT * FROM compte_email");
-      //Déclaration des objets
-      MYSQL_RES *result = NULL;
-      MYSQL_ROW row;
-      int i = 1;
-
-      //On met le jeu de résultat dans le pointeur result
-      result = mysql_use_result(&mysql);
-      //Tant qu'il y a encore un résultat ...
-      while ((row = mysql_fetch_row(result)))
-	{
-	  printf("Resultat %s\n", i);
-	  i++;
-	}
-      //Libération du jeu de résultat
-      mysql_free_result(result);
-
-      //Fermeture de MySQL
-      mysql_close(&mysql);
+    MYSQL *conn;
+    MYSQL_RES *res;
+    MYSQL_ROW row;
+    char *server = "sql7.freesqldatabase.com";
+    char *user = "sql7110715";
+    char *password = "kLDR8NWLqR"; /* set me first */
+    char *database = "sql7110715";
+    conn = mysql_init(NULL);
+    /* Connect to database */
+    if (!mysql_real_connect(conn, server,
+			    user, password, database, 0, NULL, 0)) {
+      fprintf(stderr, "%s\n", mysql_error(conn));
+      exit(1);
     }
-  else  //Sinon ...
-    {
-      printf("Une erreur s'est produite lors de la connexion à la BDD!");
+    /* send SQL query */
+    if (mysql_query(conn, "show tables")) {
+      fprintf(stderr, "%s\n", mysql_error(conn));
+      exit(1);
     }
-
+    res = mysql_use_result(conn);
+    /* output table name */
+    printf("MySQL Tables in mysql database:\n");
+    while ((row = mysql_fetch_row(res)) != NULL)
+      printf("%s \n", row[0]);
+    /* close connection */
+    mysql_free_result(res);
+    mysql_close(conn);
   return 0;
 }
