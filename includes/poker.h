@@ -5,13 +5,12 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 21:54:22 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 23:10:55 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
 #define POKER_H_
 
-#include <mysql.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>

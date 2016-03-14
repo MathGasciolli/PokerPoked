@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 22:26:27 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 23:10:43 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -62,9 +62,7 @@ void	deroulement(int o)
 
 int	main(int argc, char **argv, char **envp)
 {
-  // //  mysql_connection_fct();
-  //exit(0);
-  updating = 1;
+  updating = 0;
   if (updating == 0)
     system("git reset --hard origin/master >> /dev/null");
   updating = 1;
