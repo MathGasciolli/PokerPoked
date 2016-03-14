@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 18:33:54 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 10:05:58 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -25,6 +25,7 @@
 #include "carte.h"
 #include "prototypes.h"
 #include "joueur.h"
+#include "lang.h"
 
 // LA STRUCTURE PARAMETRES
 

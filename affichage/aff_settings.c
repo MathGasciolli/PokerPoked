@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 18:25:51 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 16:34:27 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 10:14:07 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -40,18 +40,18 @@ void	aff_settings(int selected, char **option)
     sprintf(params[7], "%c", jeu.button_restart);
   i = 0;
   attron(A_DIM);
-  while (i < 9)
+  while (i < 10)
     {
-      if (i == selected && i != 8)
+      if (i == selected && i != 9)
 	{
 	  attron(A_REVERSE);
 	  mvprintw(8+3*i, 30, "%s: ", option[i]);
 	  mvprintw(8+3*i, COLS-strlen(params[i])-30, "'%s'", params[i]);
 	  attroff(A_REVERSE);
 	}
-      else if (i == 8 && i != selected)
+      else if (i == 9 && i != selected)
 	mvprintw(8+4*i, COLS/2 - (strlen(option[i])/2), "%s", option[i]);
-      else if (i == 8 && i == selected){
+      else if (i == 9 && i == selected){
 	attron(A_REVERSE);
 	mvprintw(8+4*i, COLS/2 - (strlen(option[i])/2), "%s", option[i]);
 	attroff(A_REVERSE);
@@ -158,7 +158,7 @@ void	modif(int i)
       c = getch();
       jeu.button_restart = c;
     }
-  else if (i == 8)
+  else if (i == 9)
     aff_config();
   free(tmp);
 }
@@ -174,8 +174,8 @@ void	open_settings()
   int	c = 0;
   char	**option;
 
-  option = malloc(10 * sizeof(char *));
-  while (c < 10)
+  option = malloc(11 * sizeof(char *));
+  while (c < 11)
     {
       option[c] = malloc(30 * sizeof(char));
       c++;
@@ -188,7 +188,8 @@ void	open_settings()
   option[5] = "PAUSE BUTTON";
   option[6] = "EXIT BUTTON";
   option[7] = "RESTART BUTTON";
-  option[8] = "LOAD ANOTHER CONFIG";
+  option[8] = "LANGUAGE";
+  option[9] = "LOAD ANOTHER CONFIG";
   clear();
   selected = 0;
   keypad(stdscr, TRUE);
@@ -200,7 +201,7 @@ void	open_settings()
       c = getch();
       if (c == KEY_UP && selected > 0)
 	selected--;
-      else if (c == KEY_DOWN && selected < 8)
+      else if (c == KEY_DOWN && selected < 9)
 	selected++;
       else if (c == 360)
 	export_config();

@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 23:58:47 2016 Mathieu GASCIOLLI
-** Last update Wed Mar  9 20:07:31 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 10:29:50 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -37,7 +37,7 @@ void	argent_fin(int o)
     }
   else if (o == 0)
     {
-      mvprintw(5, COLS/2 - 9, "%s won..", ia.name);
+      mvprintw(5, COLS/2 - 9, "%s won !", ia.name);
       refresh();
       ia.argent = ia.argent + pot;
       pot = 0;
