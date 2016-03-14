@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 13:22:40 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:08:46 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -27,6 +27,7 @@ int	get_action_menu()
   int	selected;
   int	c;
   char	**av;
+  char	**env;
 
   if (situation != ALLIN && situation != FOLD)
     {
@@ -69,7 +70,7 @@ int	get_action_menu()
 		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
-		    main(0, av);
+		    main(0, av, env);
 		  }
 		else
 		  {
@@ -129,7 +130,7 @@ int	get_action_menu()
 		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
-		    main(0, av);
+		    main(0, av, env);
 		  }
 		else
 		  {
@@ -178,7 +179,7 @@ int	get_action_menu()
 		    mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
 		    refresh();
 		    sleep(2);
-		    main(0, av);
+		    main(0, av, env);
 		  }
 		else
 		  {

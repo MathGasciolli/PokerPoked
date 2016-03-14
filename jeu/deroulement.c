@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Wed Mar  9 02:11:01 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 13:26:23 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:10:46 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -140,7 +140,7 @@ void	end_of_hand_1()
   situation = CHECK;
 }
 
-void	finpartie(int ac, char **av)
+void	finpartie(int ac, char **av, char **env)
 {
   int	c;
 
@@ -158,7 +158,7 @@ void	finpartie(int ac, char **av)
       mvprintw(LINES/2, COLS/2 - 10, "%s", jeu.langue.restarting);
       refresh();
       sleep(2);
-      main(0, av);
+      main(0, av, env);
     }
   else
     {

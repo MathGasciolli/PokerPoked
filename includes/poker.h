@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 13:01:37 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:12:34 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
@@ -51,6 +51,7 @@ typedef struct s_card
 
 // GLOBALES
 
+int	updating;
 params	jeu;
 lang	english;
 lang	francais;

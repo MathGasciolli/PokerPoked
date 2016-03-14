@@ -5,13 +5,13 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 01:47:15 2016 Mathieu GASCIOLLI
-** Last update Sat Mar 12 16:27:11 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:07:32 2016 Mathieu GASCIOLLI
 */
 
 #ifndef PROTOTYPES_H_
 #define PROTOTYPES_H_
 
-int	main(int, char**);
+int	main(int, char**, char **);
 char	*interpreteur_valeur(carte);
 char	*interpreteur_couleur(carte);
 carte	*init_paquet();
@@ -20,7 +20,7 @@ void	distrib_cartes_debut();
 void	thecheck();
 void	end_of_hand_0();
 void	end_of_hand_1();
-void	finpartie(int, char**);
+void	finpartie(int, char**, char**);
 void	poker_hand();
 void	debut_hand();
 void	quitter_prog();

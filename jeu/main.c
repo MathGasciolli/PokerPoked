@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:00 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 13:30:03 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:11:51 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -60,8 +60,11 @@ void	deroulement(int o)
   refresh();
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv, char **envp)
 {
+  if (updating == 0)
+    execve("git pull", argv, envp);
+  updating = 1;
   srand(time(NULL));
   lang_english();
   lang_francais();
@@ -74,6 +77,6 @@ int	main(int ac, char **av)
       poker_hand();
     }
   clear();
-  finpartie(ac, av);
+  finpartie(argc, argv, envp);
   return (0);
 }
