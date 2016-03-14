@@ -5,12 +5,14 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 00:50:29 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 16:12:34 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 17:45:39 2016 Mathieu GASCIOLLI
 */
 
 #ifndef POKER_H_
 #define POKER_H_
 
+#include <arpa/inet.h>
+#include <mysql/mysql.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -51,6 +53,7 @@ typedef struct s_card
 
 // GLOBALES
 
+MYSQL	mysql;
 int	updating;
 params	jeu;
 lang	english;
