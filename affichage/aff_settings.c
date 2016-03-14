@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar 11 18:25:51 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 15:07:20 2016 Mathieu GASCIOLLI
+** Last update Mon Mar 14 16:01:13 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -229,30 +229,32 @@ void	open_settings()
   int	c = 0;
   char	**option;
 
-  option = malloc(11 * sizeof(char *));
-  while (c < 11)
-    {
-      option[c] = malloc(30 * sizeof(char));
-      c++;
-    }
-  option[0] = jeu.langue.initial_bankroll;
-  option[1] = jeu.langue.blind_amount;
-  option[2] = jeu.langue.ianame;
-  option[3] = jeu.langue.playername;
-  option[4] = jeu.langue.show_hands;
-  option[5] = jeu.langue.button_pause;
-  option[6] = jeu.langue.button_exit;
-  option[7] = jeu.langue.button_res;
-  option[8] = jeu.langue.lang;
-  option[9] = jeu.langue.other_conf;
   clear();
   selected = 0;
   keypad(stdscr, TRUE);
-  aff_settings(selected, option);
   c = 0;
   refresh();
   while (c != 27)
     {
+      option = malloc(11 * sizeof(char *));
+      while (c < 11)
+	{
+	  option[c] = malloc(30 * sizeof(char));
+	  c++;
+	}
+      option[0] = jeu.langue.initial_bankroll;
+      option[1] = jeu.langue.blind_amount;
+      option[2] = jeu.langue.ianame;
+      option[3] = jeu.langue.playername;
+      option[4] = jeu.langue.show_hands;
+      option[5] = jeu.langue.button_pause;
+      option[6] = jeu.langue.button_exit;
+      option[7] = jeu.langue.button_res;
+      option[8] = jeu.langue.lang;
+      option[9] = jeu.langue.other_conf;
+      clear();
+      aff_settings(selected, option);
+      refresh();
       c = getch();
       if (c == KEY_UP && selected > 0)
 	selected--;
@@ -267,6 +269,6 @@ void	open_settings()
       clear();
       aff_settings(selected, option);
       refresh();
+      free(option);
     }
-  free(option);
 }
