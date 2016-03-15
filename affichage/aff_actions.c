@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Fri Mar  4 18:13:00 2016 Mathieu GASCIOLLI
-** Last update Tue Mar 15 18:00:27 2016 Mathieu GASCIOLLI
+** Last update Tue Mar 15 18:04:44 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -103,7 +103,7 @@ void	aff_choix(int selected)
       attron(A_REVERSE);
       printw("NEXT");
       attroff(A_REVERSE);
-      printw("                                                                   "); // Beurk :/
+      printw("                                                         "); // Beurk :/
       refresh();
     }
 }

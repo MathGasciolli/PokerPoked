@@ -5,7 +5,7 @@
 ** Login   <gascio_m@epitech.net>
 **
 ** Started on  Sat Mar  5 00:23:30 2016 Mathieu GASCIOLLI
-** Last update Mon Mar 14 16:08:46 2016 Mathieu GASCIOLLI
+** Last update Tue Mar 15 18:05:36 2016 Mathieu GASCIOLLI
 */
 
 #include "poker.h"
@@ -203,7 +203,7 @@ void	get_action()
 
   act = get_action_menu();
   keypad(stdscr, FALSE);
-  mvprintw(LINES-5, COLS-55, "                                     ");
+  mvprintw(LINES-5, COLS-55, "                                                                       ");
   refresh();
   if (situation == CHECK)
     {
